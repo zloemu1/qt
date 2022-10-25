@@ -3,7 +3,7 @@ pipelines:
   default:
     - step:
         script:
-        - apt-get update && apt-get install -y gnupg ca-certificates && echo 'deb [arch=amd64] https://pkg.mxe.cc/repos/apt focal main' > /etc/apt/sources.list.d/mxeapt.list && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 86B72ED9 && apt-get update && apt-get install -y mxe-i686-w64-mingw32.shared-qt5 mxe-i686-w64-mingw32.shared-qtwebkit
+        - export DEBIAN_FRONTEND=noninteractive && export PATH=/usr/lib/mxe/usr/bin:$PATH && apt-get update && apt-get install -y gnupg ca-certificates && echo 'deb [arch=amd64] https://pkg.mxe.cc/repos/apt focal main' > /etc/apt/sources.list.d/mxeapt.list && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 86B72ED9 && apt-get update && apt-get install -y mxe-i686-w64-mingw32.shared-qt5
         - mkdir build
         - cd build
         - i686-w64-mingw32.shared-cmake ..
