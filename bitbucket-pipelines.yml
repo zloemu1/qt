@@ -1,4 +1,4 @@
-image: ubuntu:focal
+image: zlofenix/emubuilder:qt5
 pipelines:
   default:
     - step:
