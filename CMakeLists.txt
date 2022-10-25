@@ -19,6 +19,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fno-rtti -std=c++14")
 
 add_subdirectory(ZQml)
 add_subdirectory(ZQRes)
-if(IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/ZQt")
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/ZQt/CMakeLists.txt")
 	add_subdirectory(ZQt)
 endif()
