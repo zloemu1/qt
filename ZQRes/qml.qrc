@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/">
+        <file>bf3/maps/mp_001.jpg</file>
+        <file>bf3/maps/mp_003.jpg</file>
+        <file>bf3/maps/mp_007.jpg</file>
+        <file>bf3/maps/mp_011.jpg</file>
+        <file>bf3/maps/mp_012.jpg</file>
+        <file>bf3/maps/mp_013.jpg</file>
+        <file>bf3/maps/mp_017.jpg</file>
+        <file>bf3/maps/mp_018.jpg</file>
+        <file>bf3/maps/mp_subway.jpg</file>
+        <file>bf3/maps/xp1_001.jpg</file>
+        <file>bf3/maps/xp1_002.jpg</file>
+        <file>bf3/maps/xp1_003.jpg</file>
+        <file>bf3/maps/xp1_004.jpg</file>
+        <file>bf3/maps/xp2_factory.jpg</file>
+        <file>bf3/maps/xp2_office.jpg</file>
+        <file>bf3/maps/xp2_palace.jpg</file>
+        <file>bf3/maps/xp2_skybar.jpg</file>
+        <file>bf3/maps/xp3_alborz.jpg</file>
+        <file>bf3/maps/xp3_desert.jpg</file>
+        <file>bf3/maps/xp3_shield.jpg</file>
+        <file>bf3/maps/xp3_valley.jpg</file>
+        <file>bf3/maps/xp4_fd.jpg</file>
+        <file>bf3/maps/xp4_parl.jpg</file>
+        <file>bf3/maps/xp4_quake.jpg</file>
+        <file>bf3/maps/xp4_rubble.jpg</file>
+        <file>bf3/maps/xp5_001.jpg</file>
+        <file>bf3/maps/xp5_002.jpg</file>
+        <file>bf3/maps/xp5_003.jpg</file>
+        <file>bf3/maps/xp5_004.jpg</file>
+        <file>fonts/MaterialIcons-Regular.ttf</file>
+        <file>fonts/NotoSans-Regular.ttf</file>
+    </qresource>
+</RCC>
