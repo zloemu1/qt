@@ -24,14 +24,19 @@ ColumnLayout {
 				return
 			libraryView.currentIndex = 1
 			popupBusy.close()
-			installFolder.currentIndex = installFolder.indexOfValue(ZQt.getInstallLocationsModel().getLast())
 			textTotalFiles.visible = infoTotal > 1
 			textTotalDownloadSize.visible = infoTotal > 1
 			textTotalHddSize.visible = infoTotal > 1
 			textTotalFiles.text = 'Total files: ' + totalFiles
 			textTotalDownloadSize.text = 'Total download size: ' + ZQt.formattedDataSize(totalDownloadSize)
 			textTotalHddSize.text = 'Total hdd size: ' + ZQt.formattedDataSize(totalHddSize)
-			textFreeHdd.text = 'Free hdd space: ' + ZQt.formattedDataSize(ZQt.getFreeSpace(installFolder.currentText))
+			if (libraryView.fromHdd)
+				textFreeHdd.text = 'Free hdd space: ' + ZQt.formattedDataSize(ZQt.getFreeSpace(libraryView.folder))
+			else
+			{
+				installFolderCombo.currentIndex = installFolderCombo.indexOfValue(ZQt.getInstallLocationsModel().getLast())
+				textFreeHdd.text = 'Free hdd space: ' + ZQt.formattedDataSize(ZQt.getFreeSpace(installFolderCombo.currentText))
+			}
 		}
 		function onSignalGCInfoRecalc(totalFiles, totalDownloadSize, totalHddSize)
 		{
@@ -47,12 +52,18 @@ ColumnLayout {
 			font.pointSize: 13
 		}
 		ComboBox {
-			id: installFolder
+			id: installFolderCombo
 			model: ZQt.getInstallLocationsModel()
 			textRole: 'display'
 			valueRole: 'display'
 			visible: !libraryView.fromHdd
-			onActivated: textFreeHdd.text = 'Free hdd space: ' + ZQt.formattedDataSize(ZQt.getFreeSpace(installFolder.currentText))
+			onActivated: textFreeHdd.text = 'Free hdd space: ' + ZQt.formattedDataSize(ZQt.getFreeSpace(installFolderCombo.currentText))
+		}
+		Label {
+			id: installFolderHDD
+			font.pointSize: 13
+			text: libraryView.folder
+			visible: libraryView.fromHdd
 		}
 	}
 	Label {
@@ -163,7 +174,7 @@ ColumnLayout {
 			focus: true
 			onClicked: {
 				if (!libraryView.fromHdd)
-					libraryView.folder = installFolder.currentText
+					libraryView.folder = installFolderCombo.currentText
 				libraryView.currentIndex = 0
 				var res = ZGames.add(libraryView.folder, libraryView.fromHdd, autoUpdate.checked, autoDlc.checked)
 				if (res !== 0)

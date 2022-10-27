@@ -120,7 +120,11 @@ Page {
 					if (ZGames.runnedGame)
 						ZGames.stop()
 					else
-						ZGames.start(zgame.id, launcherCombo.currentValue, zgame.data(zgame.index(launcherCombo.currentIndex, 0), Qt.EditRole))
+					{
+						var res = ZGames.start(zgame.id, launcherCombo.currentValue, zgame.data(zgame.index(launcherCombo.currentIndex, 0), Qt.EditRole))
+						if (res !== 0)
+							popupError.show('Run failed: ' + res)
+					}
 				}
 			}
 			AutoResizingComboBox {
@@ -146,12 +150,20 @@ Page {
 			}
 			Button {
 				text: qsTr('Repair')
-				onClicked: zgame.repair()
+				onClicked: {
+					var res = zgame.repair()
+					if (res !== 0)
+						popupError.show('Repair failed: ' + res)
+				}
 			}
 			Button {
 				text: qsTr('Update')
 				visible: ZGames.canUpdate
-				onClicked: zgame.update()
+				onClicked: {
+					var res = zgame.update()
+					if (res !== 0)
+						popupError.show('Update failed: ' + res)
+				}
 			}
 			Item {
 				width: 5

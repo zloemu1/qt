@@ -18,7 +18,12 @@ Page {
 		}
 		MenuItem {
 			text: qsTr('Install')
-			onTriggered: libraryView.show(gameMenu.zid, false, gameMenu.zsys)
+			onTriggered: {
+				if (ZQt.getInstallLocationsModel().rowCount() > 0)
+					libraryView.show(gameMenu.zid, false, gameMenu.zsys)
+				else
+					setPage('settings')
+			}
 		}
 		MenuItem {
 			text: qsTr('From HDD')
@@ -111,6 +116,7 @@ Page {
 		}
 		onAccepted: {
 			libraryView.folder = folder
+			libraryView.folder = libraryView.folder.replace('file:///', '')
 			libraryView.show(gid, true, sys)
 		}
 	}
