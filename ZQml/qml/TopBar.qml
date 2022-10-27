@@ -159,12 +159,11 @@ ToolBar {
 				anchors.verticalCenter: parent.contentItem.top
 				color: Material.accent
 				radius: 8
-				width: childrenRect.width
+				width: childrenRect.width + 4
 				height: childrenRect.height
-//				height: 15
 				Text {
-//					anchors.horizontalCenter: parent.horizontalCenter
-//					anchors.verticalCenter: parent.verticalCenter
+					anchors.left: parent.left
+					anchors.leftMargin: 2
 					text: ZChats.unreaded
 					font.bold: true
 					font.pixelSize: 11
