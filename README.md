@@ -1,7 +1,1 @@
-In ZClient folder create empty
-
-zqmllocal.dev to use local ZQml.dll
-
-zqreslocal.dev to use local ZQRes.dll
-
-from ZClient folder
+Put your ZQml.dll and ZQRes.dll, if needed, to folder with ZClient.exe, logs will be log_ZLO.txt
