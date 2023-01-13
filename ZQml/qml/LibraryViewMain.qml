@@ -32,10 +32,8 @@ Page {
 	}
 	RowLayout {
 		id: row
-		Text {
+		Label {
 			Layout.margins: 10
-			color: Material.color(Material.Grey)
-			font.pixelSize: 15
 			text: 'Filter'
 		}
 		Rectangle {
@@ -46,7 +44,7 @@ Page {
 				anchors.left: parent.left
 				anchors.right: parent.right
 				font.pointSize: 13
-				color: "Gray"
+				color: Material.foreground
 				onTextEdited: ZLibrary.filterName(text)
 				selectByMouse: true
 				MouseArea {
@@ -96,7 +94,6 @@ Page {
 					anchors.fill: parent
 					text: display.name
 					font.bold: true
-					font.pixelSize: 15
 					wrapMode: Text.WordWrap
 					visible: ma.containsMouse
 					horizontalAlignment: Text.AlignHCenter

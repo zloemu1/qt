@@ -208,17 +208,15 @@ ApplicationWindow {
 					radius: 5
 					ColumnLayout {
 						spacing: 0
-						Text {
+						Label {
 							padding: 5
 							text: Qt.formatDateTime(new Date(display.date), "hh:mm:ss")
-							color: "gray"
 							font.bold: true
 						}
-						Text {
+						Label {
 							padding: 5
 							Layout.maximumWidth: chatModel.width - 30
 							text: display.text
-							color: "gray"
 							font.bold: true
 							wrapMode: Text.Wrap
 						}
@@ -249,7 +247,7 @@ ApplicationWindow {
 					anchors.left: parent.left
 					anchors.right: parent.right
 					font.pointSize: 13
-					color: "Gray"
+					color: Material.foreground
 					selectByMouse: true
 					onAccepted: {
 						ZChats.message(text)

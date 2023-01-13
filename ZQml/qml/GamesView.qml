@@ -47,7 +47,7 @@ Page {
 					anchors.left: parent.left
 					anchors.right: parent.right
 					font.pointSize: 13
-					color: "Gray"
+					color: Material.foreground
 					onTextEdited: ZGames.filterName(text)
 					selectByMouse: true
 				}
@@ -72,14 +72,12 @@ Page {
 					}
 					currentIndex: -1
 					highlightMoveVelocity: -1
-					delegate: Text {
+					delegate: Label {
 						anchors.left: parent ? parent.left : undefined
 						anchors.right: parent ? parent.right : undefined
 						anchors.rightMargin: installedGamesList.contentHeight > installedGamesList.height ? 10 : 0
 						clip: true
-						color: "gray"
 						text: display.name
-						font.pointSize: 13
 						MouseArea {
 							anchors.fill: parent
 							onClicked: installedGamesList.currentIndex = index
@@ -129,7 +127,6 @@ Page {
 		ColumnLayout {
 			Label {
 				font.bold: true
-				font.pointSize: 13
 				Layout.fillWidth: true
 				text: "Remove game with files or from ZClient only?"
 			}
@@ -158,6 +155,60 @@ Page {
 					focus: true
 				}
 			}
+		}
+	}
+	function modeNameBF(mode)
+	{
+		switch (mode)
+		{
+			case 'AirSuperiority':
+				return qsTr('Air Superiority')
+			case 'B2KConquestLarge':
+				return qsTr('B2K Conquest Large')
+			case 'B2KConquestSmall':
+				return qsTr('B2K Conquest Small')
+			case 'CaptureTheFlag':
+				return qsTr('Capture The Flag')
+			case 'CarrierAssaultLarge':
+				return qsTr('Carrier Assault Large')
+			case 'CarrierAssaultSmall':
+				return qsTr('Carrier Assault Small')
+			case 'Chainlink':
+				return qsTr('Chain Link')
+			case 'ConquestAssaultLarge':
+				return qsTr('Conquest Assault Large')
+			case 'ConquestAssaultSmall':
+				return qsTr('Conquest Assault Small')
+			case 'ConquestLarge':
+				return qsTr('Conquest Large')
+			case 'ConquestSmall':
+				return qsTr('Conquest Small')
+			case 'Domination':
+				return qsTr('Domination')
+			case 'Elimination':
+				return qsTr('Defuse')
+			case 'GunMaster':
+				return qsTr('Gun Master')
+			case 'Obliteration':
+				return qsTr('Obliteration')
+			case 'RushLarge':
+				return qsTr('Rush')
+			case 'Scavenger':
+				return qsTr('Scavenger')
+			case 'SquadDeathMatch':
+				return qsTr('Squad Deathmatch')
+			case 'SquadRush':
+				return qsTr('Squad Rush')
+			case 'SquadObliteration':
+				return qsTr('Squad Obliteration')
+			case 'TeamDeathMatch':
+				return qsTr('Team Deathmatch')
+			case 'TeamDeathMatchC':
+				return qsTr('TDM Close Quarters')
+			case 'TankSuperiority':
+				return qsTr('Tank Superiority')
+			default:
+				return mode
 		}
 	}
 }

@@ -49,7 +49,6 @@ ColumnLayout {
 		Layout.alignment: Qt.AlignHCenter
 		Label {
 			text: 'Install location'
-			font.pointSize: 13
 		}
 		ComboBox {
 			id: installFolderCombo
@@ -61,14 +60,12 @@ ColumnLayout {
 		}
 		Label {
 			id: installFolderHDD
-			font.pointSize: 13
 			text: libraryView.folder
 			visible: libraryView.fromHdd
 		}
 	}
 	Label {
 		id: textFreeHdd
-		font.pointSize: 13
 		Layout.alignment: Qt.AlignHCenter
 	}
 	Row {
@@ -114,7 +111,6 @@ ColumnLayout {
 					Layout.fillWidth: true
 					Label {
 						text: display.name
-						font.pointSize: 13
 						width: parent.width
 						wrapMode: Text.WordWrap
 					}
@@ -122,15 +118,12 @@ ColumnLayout {
 						spacing: 20
 						Label {
 							text: 'Files: ' + display.files
-							font.pointSize: 13
 						}
 						Label {
 							text: 'Download size: ' + ZQt.formattedDataSize(display.downloadSize)
-							font.pointSize: 13
 						}
 						Label {
 							text: 'Hdd size: ' + ZQt.formattedDataSize(display.hddSize)
-							font.pointSize: 13
 						}
 					}
 				}
@@ -149,15 +142,12 @@ ColumnLayout {
 	}
 	Label {
 		id: textTotalFiles
-		font.pointSize: 13
 	}
 	Label {
 		id: textTotalDownloadSize
-		font.pointSize: 13
 	}
 	Label {
 		id: textTotalHddSize
-		font.pointSize: 13
 	}
 	RowLayout {
 		spacing: 5

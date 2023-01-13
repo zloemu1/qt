@@ -15,6 +15,8 @@ ApplicationWindow {
 	title: 'ZLOEmu'
 	Material.theme: Material.Dark
 	font.family: appFont.name
+	font.pointSize: 12
+	font.capitalization: Font.MixedCase
 	function setPage(name)
 	{
 		switch (name)
@@ -171,6 +173,24 @@ ApplicationWindow {
 				color: 'black'
 			}
 		}
+		Column {
+			id: updateStatus
+			visible: false
+			Layout.fillWidth: true
+			height: childrenRect.height
+			Label {
+				id: updateStatusText
+				anchors.horizontalCenter: parent.horizontalCenter
+				font.bold: true
+				font.pixelSize: 20
+			}
+			ProgressBar {
+				id: updateProgress
+				from: 0
+				anchors.left: parent.left
+				anchors.right: parent.right
+			}
+		}
 		Views {
 			id: viewMain
 			Layout.fillHeight: true
@@ -179,9 +199,28 @@ ApplicationWindow {
 	}
 	Connections {
 		target: ZQt
+		function onSignalUpdaterStart(name, size, zdata)
+		{
+			if (zdata)
+				updateStatusText.text = qsTr('Updating') + ' ZData ' + name
+			else
+				updateStatusText.text = qsTr('Updating') + ' ' + name
+			updateProgress.to = size;
+			updateProgress.value = 0;
+			updateStatus.visible = true
+		}
+		function onSignalUpdaterPart(size)
+		{
+			updateProgress.value += size;
+		}
+//		function onSignalUpdaterFailed(name, zdata, t)
+		function onSignalUpdaterFinished()
+		{
+			updateStatus.visible = false
+		}
 		function onSignalConnecting()
 		{
-			connectStatusText.text = 'Connecting...'
+			connectStatusText.text = qsTr('Connecting...')
 			connectStatus.visible = true
 		}
 		function onSignalConnected()
@@ -190,7 +229,7 @@ ApplicationWindow {
 		}
 		function onSignalDisconnected()
 		{
-			connectStatusText.text = 'Disconnected, reconnecting in 10 seconds'
+			connectStatusText.text = qsTr('Disconnected, reconnecting in 10 seconds')
 			connectStatus.visible = true
 		}
 	}
@@ -230,7 +269,6 @@ ApplicationWindow {
 			Label {
 				id: popupBusyLabel
 				font.bold: true
-				font.pointSize: 13
 				Layout.alignment: Qt.AlignHCenter
 			}
 		}
@@ -250,7 +288,6 @@ ApplicationWindow {
 			Label {
 				id: popupErrorLabel
 				font.bold: true
-				font.pointSize: 13
 				Layout.alignment: Qt.AlignHCenter
 			}
 			Button {

@@ -395,7 +395,7 @@ enabled: false
 						anchors.left: parent.left
 						anchors.right: parent.right
 						font.pointSize: 13
-						color: "Gray"
+						color: Material.foreground
 						selectByMouse: true
 						focus: true
 					}

@@ -13,16 +13,12 @@ Page {
 	}
 	Column {
 /*
-		Text {
+		Label {
 			text: 'ZClient lang'
-			color: Material.color(Material.Grey)
-			font.pixelSize: 13
 		}
 */
-		Text {
+		Label {
 			text: 'Games default lang'
-			color: Material.color(Material.Grey)
-			font.pixelSize: 13
 		}
 		ComboBox {
 			id: gamesDefaultLang
@@ -32,10 +28,8 @@ Page {
 			onActivated: ZQt.setDefaultGameLang(parseInt(currentValue))
 		}
 
-		Text {
+		Label {
 			text: 'Install locations'
-			color: Material.color(Material.Grey)
-			font.pixelSize: 13
 		}
 		Rectangle {
 			width: 200
@@ -49,12 +43,10 @@ Page {
 				currentIndex: -1
 				boundsBehavior: Flickable.StopAtBounds
 				highlightMoveVelocity: -1
-				delegate: Text {
+				delegate: Label {
 					property string folder: model.display
 					anchors.left: parent ? parent.left : undefined
 					anchors.right: parent ? parent.right : undefined
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
 					text: model.display + ' ' + ZQt.formattedDataSize(model.edit)
 					MouseArea {
 						anchors.fill: parent

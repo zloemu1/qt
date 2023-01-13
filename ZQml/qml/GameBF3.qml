@@ -9,32 +9,36 @@ StackLayout {
 	function pageChange(vis)
 	{
 		if (vis)
-			ZGameServers.subscribeBF3()
+			ZGameServers.subscribe('BF3')
 		else
-			ZGameServers.unsubscribeBF3()
+		{
+			serverDetails(null)
+			ZGameServers.unsubscribe('BF3')
+		}
 	}
+	property GameServerBF3 zsrv: null
 	property var sv: null
-	function serverDetails(idx)
+	function serverDetails(srv)
 	{
+		stack.currentIndex = 0
 		if (sv !== null)
 		{
 			sv.destroy()
 			sv = null
 		}
-		if (idx >= 0)
+		if (srv)
 		{
-			sv = serverView.createObject(stack, { zsrv: list.model.data(list.model.index(idx, 0), 0) })
+			zsrv = srv
+			sv = serverView.createObject(scrollView)
 			if (sv.status === Component.Error)
 				console.log('Create bf3 server view error ' + sv.errorString())
 			else
 				stack.currentIndex = 1
 		}
-		else
-			stack.currentIndex = 0
 	}
 	Connections {
 		target: ZGameServers
-		function onSignalBF3Delete(id) { if (sv !== null && sv.zsrv.id == id) serverDetails(-1) }
+		function onSignalBF3Delete(id) { if (sv !== null && zsrv.id == id) serverDetails(null) }
 	}
 	currentIndex: 0
 	clip: true
@@ -61,7 +65,7 @@ StackLayout {
 				anchors.left: parent.left
 				anchors.right: parent.right
 				MouseArea {
-					onClicked: serverDetails(index)
+					onClicked: serverDetails(display)
 					Layout.fillWidth: true
 					height: childrenRect.height
 					RowLayout {
@@ -75,16 +79,12 @@ StackLayout {
 						}
 						Column {
 							Layout.fillWidth: true
-							Text {
-								color: Material.color(Material.Grey)
-								font.pixelSize: 15
+							Label {
 								text: display.name
 								wrapMode: Text.Wrap
 							}
-							Text {
-								color: Material.color(Material.Grey)
-								font.pixelSize: 15
-								text: display.levelname + ' | ' + display.mode
+							Label {
+								text: display.levelname + ' | ' + modeNameBF(display.mode)
 							}
 						}
 						Rectangle {
@@ -105,6 +105,11 @@ StackLayout {
 					font.pointSize: 15
 					onClicked: ZGameServers.startBF3(zgame.id, decoration.id)
 					enabled: ZGames.runnedGame === 0
+					ToolTip {
+						visible: parent.hovered
+						delay: 1000
+						text: qsTr('Join')
+					}
 				}
 			}
 		}
@@ -112,6 +117,17 @@ StackLayout {
 	Component {
 		id: serverView
 		GameBF3Server {
+		}
+	}
+	ScrollView {
+		id: scrollView
+		clip: true
+		ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+		ScrollBar.vertical.policy: scrollView.contentHeight > scrollView.height ? ScrollBar.AlwaysOn : ScrollBar.AlwaysOff
+		ScrollBar.vertical.implicitWidth: 10
+		ScrollBar.vertical.contentItem: Rectangle {
+			color: Material.accent
+			radius: 5
 		}
 	}
 }

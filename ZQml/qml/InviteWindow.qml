@@ -13,14 +13,15 @@ ApplicationWindow {
 	minimumHeight: 250
 	visible: false
 	title: 'Invite to game'
-	property int timeout: 10000
+	property int timeout: 20000
 	property var inviteFrom: 0
+	property string inviteKey
 	function zclose()
 	{
 		timer.stop()
 		if (inviteFrom > 0)
 		{
-			ZFriends.inviteReject(inviteFrom)
+			ZFriends.inviteReject(inviteFrom, inviteKey)
 			inviteFrom = 0
 		}
 		visible = false
@@ -36,19 +37,20 @@ ApplicationWindow {
 	}
 	Connections {
 		target: ZFriends
-		function onSignalInviteAccept(id)
+		function onSignalInviteAccept(id, key)
 		{
 			inviteFrom = 0
 			zclose()
 		}
-		function onSignalInviteReject(id)
+		function onSignalInviteReject(id, key)
 		{
 			inviteFrom = 0
 			zclose()
 		}
-		function onSignalInvited(id, name, game, key)
+		function onSignalInvited(id, name, game, key, text)
 		{
 			inviteFrom = id
+			inviteKey = key
 			nameLabel.text = name
 			gameLabel.text = game
 			progress.value = timeout
@@ -63,7 +65,7 @@ ApplicationWindow {
 		repeat: true
 		onTriggered: {
 			progress.value -= interval
-			if (progress.value >= timeout)
+			if (progress.value <= 0)
 				zclose()
 		}
 	}
@@ -72,17 +74,14 @@ ApplicationWindow {
 		Label {
 			id: nameLabel
 			Layout.alignment: Qt.AlignHCenter
-			font.pointSize: 13
 		}
 		Label {
 			Layout.alignment: Qt.AlignHCenter
-			font.pointSize: 13
 			text: 'has invited you to play'
 		}
 		Label {
 			id: gameLabel
 			Layout.alignment: Qt.AlignHCenter
-			font.pointSize: 13
 		}
 		ProgressBar {
 			id: progress
@@ -100,6 +99,7 @@ ApplicationWindow {
 			Button {
 				text: qsTr('Accept')
 				onClicked: {
+					ZFriends.inviteAccept(inviteFrom, inviteKey)
 					zgame.setCmd(launcherCombo.currentIndex, popupGameCmdInput.text)
 					popupGameCmd.close()
 				}

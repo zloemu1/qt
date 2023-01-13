@@ -68,7 +68,6 @@ ColumnLayout {
 					Layout.fillWidth: true
 					Label {
 						text: display.name
-						font.pointSize: 13
 						width: parent.width
 						wrapMode: Text.WordWrap
 					}
@@ -76,15 +75,12 @@ ColumnLayout {
 						spacing: 20
 						Label {
 							text: 'Files: ' + display.files
-							font.pointSize: 13
 						}
 						Label {
 							text: 'Download size: ' + ZQt.formattedDataSize(display.downloadSize)
-							font.pointSize: 13
 						}
 						Label {
 							text: 'Hdd size: ' + ZQt.formattedDataSize(display.hddSize)
-							font.pointSize: 13
 						}
 					}
 				}
@@ -103,15 +99,12 @@ ColumnLayout {
 	}
 	Label {
 		id: textTotalFiles
-		font.pointSize: 13
 	}
 	Label {
 		id: textTotalDownloadSize
-		font.pointSize: 13
 	}
 	Label {
 		id: textTotalHddSize
-		font.pointSize: 13
 	}
 	RowLayout {
 		spacing: 5

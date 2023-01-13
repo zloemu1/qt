@@ -59,7 +59,6 @@ ToolBar {
 			id: tab
 			Layout.topMargin: 10
 			Layout.bottomMargin: 10
-			font.pointSize: 13
 			font.family: rootWindow.font.name
 			TabButton {
 				onClicked: setPage('news')
@@ -203,12 +202,11 @@ ToolBar {
 			Layout.maximumWidth: 40
 		}
 
-		ColumnLayout {
+		Column {
 			Layout.rightMargin: 15
-			Text {
+			Label {
+				width: implicitWidth
 				text: ZUser.name
-				font.pointSize: 13
-				color: Material.color(Material.Grey)
 			}
 			RowLayout {
 				Text {

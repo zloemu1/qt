@@ -22,159 +22,157 @@ Page {
 				height: 1
 			}
 			Column {
-				Text {
+				Label {
 					text: zgame.name
-					color: Material.color(Material.Grey)
-					font.pixelSize: 15
 				}
-				Text {
+				Label {
 					visible: zgame.releaseDate > 0
 					text: qsTr('Release date') + ': ' + Qt.formatDateTime(new Date(zgame.releaseDate * 1000), 'dd.MM.yyyy')
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
 				}
-				Text {
+				Label {
 					visible: zgame.developer.length > 0
 					text: qsTr('Developer') + ': ' + zgame.developer
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
 				}
-				Text {
+				Label {
 					visible: zgame.publisher.length > 0
 					text: qsTr('Publisher') + ': ' + zgame.publisher
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
 				}
-				Text {
-					text: qsTr('Last run') + ': ' + (zgame.lastStart > 0 ? Qt.formatDateTime(new Date(zgame.lastStart * 1000), 'dd.MM.yyyy hh:mm:ss') : 'never')
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
+				Label {
+					text: qsTr('Last run') + ': ' + (zgame.lastStart > 0 ? Qt.formatDateTime(new Date(zgame.lastStart * 1000), 'dd.MM.yyyy hh:mm:ss') : qsTr('never'))
 				}
-				Text {
+				Label {
+					visible: zgame.lastSession > 0
+					text: qsTr('Last session') + ': ' + ZQt.formatGametime(zgame.lastSession)
+				}
+				Label {
 					visible: zgame.totalGametime > 0
-					text: 'Total played: ' + ZQt.formatGametime(zgame.totalGametime)
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
+					text: qsTr('Total played') + ': ' + ZQt.formatGametime(zgame.totalGametime)
 				}
-				Text {
-					text: 'Sys: ' + gameSysStr(zgame.sys)
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
-				}
-				Text {
+				Label {
 					id: stateText
-					text: 'State: ' + gameStateStr(zgame.state)
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
+					text: qsTr('State') + ': ' + gameStateStr(zgame.state)
 				}
-				Text {
-					text: 'Installed in: ' + zgame.path
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
+				Label {
+					text: qsTr('Installed in') + ': ' + zgame.path
 				}
-				Text {
-					text: 'Remote version: ' + zgame.remoteVersion
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
+				Label {
+					text: qsTr('Locale') + ': ' + zgame.localeStr
 				}
-				Text {
-					id: installedVersion
-					text: 'Local version: ' + zgame.localVersion
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
+				Label {
+					visible: zgame.remoteVersion != zgame.localVersion
+					text: qsTr('Remote version') + ': ' + zgame.remoteVersion
 				}
-				CheckBox {
-					checked: zgame.autoUpdate
-					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
-					text: 'Auto update'
-					onClicked: zgame.toggleAutoUpdate()
+				Label {
+					text: qsTr('Local version') + ': ' + zgame.localVersion
 				}
-				CheckBox {
-					checked: zgame.autoDlc
-					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
-					text: 'Auto install new DLC'
-					onClicked: zgame.toggleAutoDlc()
-				}
-			}
-		}
-		Row {
-			Connections {
-				target: ZGames
-				function onSignalRunnedGame(game: int) {
-					if (game)
-						runButton.text = qsTr('Kill')
-					else
-						runButton.text = qsTr('Run')
-				}
-			}
-			Button {
-				id: runButton
-				enabled: launcherCombo.currentIndex > -1
-				Component.onCompleted: {
-					if (ZGames.runnedGame)
-						runButton.text = qsTr('Kill')
-					else
-						runButton.text = qsTr('Run')
-				}
-				onClicked: {
-					if (ZGames.runnedGame)
-						ZGames.stop()
-					else
-					{
-						var res = ZGames.start(zgame.id, launcherCombo.currentValue, zgame.data(zgame.index(launcherCombo.currentIndex, 0), Qt.EditRole))
-						if (res !== 0)
-							popupError.show('Run failed: ' + res)
+				Row {
+					CheckBox {
+						checked: zgame.autoUpdate
+						enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
+						text: 'Auto update'
+						onClicked: zgame.toggleAutoUpdate()
+					}
+					CheckBox {
+						checked: zgame.autoDlc
+						enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
+						text: 'Auto install new DLC'
+						onClicked: zgame.toggleAutoDlc()
 					}
 				}
 			}
-			AutoResizingComboBox {
-				id: launcherCombo
-				model: zgame
-				textRole: 'display'
-				valueRole: 'toolTip'
-				visible: count > 1
-				Component.onCompleted: currentIndex = zgame.lastLauncher
-			}
-			Item {
-				width: 5
-				height: 1
-			}
-			Button {
-				text: 'Set cmd'
-				onClicked: popupGameCmd.show()
-				enabled: launcherCombo.currentIndex > -1
-			}
-			Item {
-				width: 5
-				height: 1
-			}
-			Button {
-				text: qsTr('Repair')
-				onClicked: {
-					var res = zgame.repair()
-					if (res !== 0)
-						popupError.show('Repair failed: ' + res)
+		}
+		Column {
+			Row {
+				spacing: 5
+				Button {
+					id: runButton
+					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
+					Component.onCompleted: {
+						if (ZGames.runnedGame)
+							runButton.text = qsTr('Kill')
+						else
+							runButton.text = qsTr('Run')
+					}
+					Connections {
+						target: ZGames
+						function onSignalRunnedGame(game: int) {
+							if (game)
+								runButton.text = qsTr('Kill')
+							else
+								runButton.text = qsTr('Run')
+						}
+					}
+					onClicked: {
+						if (ZGames.runnedGame)
+							ZGames.stop()
+						else if (launcherCombo.count > 0)
+						{
+							if (launcherCombo.currentIndex === -1)
+								launcherCombo.currentIndex = 0
+							var res = ZGames.start(zgame.id, launcherCombo.currentValue, zgame.data(zgame.index(launcherCombo.currentIndex, 0), Qt.EditRole))
+							if (res !== 0)
+								popupError.show('Run failed: ' + res)
+						}
+					}
+				}
+				AutoResizingComboBox {
+					id: launcherCombo
+					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
+					model: zgame
+					textRole: 'display'
+					valueRole: 'toolTip'
+					visible: count > 1
+					Component.onCompleted: currentIndex = zgame.lastLauncher
+				}
+				Button {
+					text: 'Set cmd'
+					onClicked: {
+						if (launcherCombo.count === 0)
+							return
+						if (launcherCombo.currentIndex === -1)
+							launcherCombo.currentIndex = 0
+						popupGameCmd.show()
+					}
+					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
 				}
 			}
-			Button {
-				text: qsTr('Update')
-				visible: ZGames.canUpdate
-				onClicked: {
-					var res = zgame.update()
-					if (res !== 0)
-						popupError.show('Update failed: ' + res)
-				}
-			}
 			Item {
-				width: 5
-				height: 1
+				width: 1
+				height: 10
 			}
-			Button {
-				text: qsTr('Remove')
-				enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
-				onClicked: {
-					installedGamesList.currentIndex = -1
-					dialogRemoveGame.open()
+			Row {
+				spacing: 5
+				Button {
+					text: qsTr('Repair')
+					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
+					onClicked: {
+						var res = zgame.repair()
+						if (res !== 0)
+							popupError.show('Repair failed: ' + res)
+					}
+				}
+				Button {
+					text: qsTr('Update')
+					visible: ZGames.canUpdate
+					onClicked: {
+						var res = zgame.update()
+						if (res !== 0)
+							popupError.show('Update failed: ' + res)
+					}
+				}
+				Button {
+					text: qsTr('Change lang')
+					visible: zgame.locales.length > 1
+					enabled: zgame.state === 1
+					onClicked: popupLangChange.show()
+				}
+				Button {
+					text: qsTr('Remove')
+					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
+					onClicked: {
+						installedGamesList.currentIndex = -1
+						dialogRemoveGame.open()
+					}
 				}
 			}
 		}
@@ -183,27 +181,21 @@ Page {
 		RowLayout {
 			anchors.left: parent.left
 			anchors.right: parent.right
-			Text {
+			Label {
 				Layout.alignment: Qt.AlignLeft
 				Layout.fillWidth: true
 				text: 'Downloading'
-				color: Material.color(Material.Grey)
-				font.pixelSize: 13
 			}
 //cross = \ue5cd
 //pause = \ue034
 //play = \ue037
-			Text {
+			Label {
 				text: '\ue034'
 				font.family: 'Material Icons'
-				font.pixelSize: 15
-				color: Material.color(Material.Grey)
 			}
-			Text {
+			Label {
 				text: '\ue5cd'
 				font.family: 'Material Icons'
-				font.pixelSize: 15
-				color: Material.color(Material.Grey)
 			}
 		}
 		ProgressBar {
@@ -211,11 +203,9 @@ Page {
 			anchors.right: parent.right
 			value: zgame.size > 0 ? (zgame.downloaded / zgame.size) : 0
 		}
-		Text {
+		Label {
 			anchors.horizontalCenter: parent.horizontalCenter
 			text: zgame.size > 0 ? (Math.round(zgame.downloaded / zgame.size * 100) + '%') : 0
-			color: Material.color(Material.Grey)
-			font.pixelSize: 13
 		}
 */
 	}
@@ -233,10 +223,8 @@ Page {
 			color: Material.accent
 			radius: 5
 		}
-		Text {
+		Label {
 			text: zgame.descr
-			color: Material.color(Material.Grey)
-			font.pixelSize: 13
 			wrapMode: Text.WordWrap
 			width: pageGameInfo.width - 10
 		}
@@ -263,7 +251,7 @@ Page {
 					anchors.left: parent.left
 					anchors.right: parent.right
 					font.pointSize: 13
-					color: "Gray"
+					color: Material.foreground
 					selectByMouse: true
 				}
 			}
@@ -279,6 +267,46 @@ Page {
 					onClicked: {
 						zgame.setCmd(launcherCombo.currentIndex, popupGameCmdInput.text)
 						popupGameCmd.close()
+					}
+				}
+			}
+		}
+	}
+	Popup {
+		id: popupLangChange
+		anchors.centerIn: Overlay.overlay
+		dim: true
+		modal: true
+		function show()
+		{
+			ZQt.getLangSelectModel().fill(zgame.id)
+			langCombo.currentIndex = langCombo.indexOfValue(zgame.locale)
+			popupLangChange.open()
+		}
+		ColumnLayout {
+			anchors.centerIn: parent
+			AutoResizingComboBox {
+				id: langCombo
+				model: ZQt.getLangSelectModel()
+				Layout.alignment: Qt.AlignHCenter
+				textRole: 'display'
+				valueRole: 'edit'
+				visible: count > 1
+			}
+			Row {
+				Layout.alignment: Qt.AlignHCenter
+				spacing: 10
+				Button {
+					text: qsTr('Cancel')
+					onClicked: popupLangChange.close()
+				}
+				Button {
+					text: qsTr('Change')
+					onClicked: {
+						var res = zgame.changeLang(langCombo.currentValue);
+						popupLangChange.close()
+						if (res !== 0)
+							popupError.show('Change lang failed: ' + res)
 					}
 				}
 			}

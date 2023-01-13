@@ -6,13 +6,11 @@ import ZGui 1.0
 Column {
 	Label {
 		text: "Sims 4 Gallery config"
-		font.pointSize: 13
 	}
 	Row {
 		spacing: 5
 		Label {
 			text: 'EA Mail'
-			font.pointSize: 13
 		}
 		Rectangle {
 			width: 200
@@ -33,7 +31,6 @@ Column {
 		spacing: 5
 		Label {
 			text: 'EA Password'
-			font.pointSize: 13
 		}
 		Rectangle {
 			width: 200
@@ -84,7 +81,6 @@ Column {
 	}
 	Label {
 		id: testResult
-		font.pointSize: 13
 		visible: false
 	}
 }

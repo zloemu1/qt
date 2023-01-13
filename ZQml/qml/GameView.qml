@@ -100,8 +100,6 @@ Page {
 	header: TabBar {
 		id: topbarGame
 		currentIndex: viewGame.currentIndex
-		font.pointSize: 13
-		font.family: rootWindow.font.name
 	}
 	SwipeView {
 		id: viewGame

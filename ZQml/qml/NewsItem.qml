@@ -49,11 +49,9 @@ Column {
 		anchors.right: parent.right
 		color: "#262626"
 		height: childrenRect.height + 10
-		Text {
+		Label {
 			topPadding: 10
 			leftPadding: 20
-			color: Material.color(Material.Grey)
-			font.pixelSize: 15
 			wrapMode: Text.WordWrap
 			width: parent.width
 			text: display.content

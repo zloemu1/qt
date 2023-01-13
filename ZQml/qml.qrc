@@ -12,6 +12,7 @@
         <file>qml/GameBF3.qml</file>
         <file>qml/GameBF3Server.qml</file>
         <file>qml/GameBF4.qml</file>
+        <file>qml/GameBF4Server.qml</file>
         <file>qml/GameBFHL.qml</file>
         <file>qml/GameContent.qml</file>
         <file>qml/GameContentAdd.qml</file>

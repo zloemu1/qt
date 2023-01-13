@@ -64,7 +64,6 @@ StackLayout {
 			Label {
 				text: 'BNet Gateway'
 				font.bold: true
-				font.pointSize: 13
 				Layout.alignment: Qt.AlignHCenter
 				visible: bnetCombo.count > 0
 			}
@@ -79,7 +78,6 @@ StackLayout {
 			Label {
 				text: 'Language'
 				font.bold: true
-				font.pointSize: 13
 				Layout.alignment: Qt.AlignHCenter
 				visible: langCombo.count > 1
 			}

@@ -125,12 +125,19 @@ Page {
 		}
 		function onSignalDone()
 		{
+			statusLabel.text = 'DONE'
+		}
+		function onSignalStop()
+		{
+			statusLabel.text = ''
+		}
+		function onSignalDisconnect()
+		{
 			if (codeRow.visible)
 				return
 			startButton.enabled = true
 			stopButton.enabled = false
 			loginpass.visible = true
-			statusLabel.text = 'DONE'
 		}
 	}
 	Column {
@@ -142,7 +149,6 @@ Page {
 				spacing: 5
 				Label {
 					text: 'Login'
-					font.pointSize: 13
 				}
 				Rectangle {
 					width: 200
@@ -162,7 +168,6 @@ Page {
 				spacing: 5
 				Label {
 					text: 'Password'
-					font.pointSize: 13
 				}
 				Rectangle {
 					width: 200
@@ -186,7 +191,6 @@ Page {
 			visible: false
 			Label {
 				id: guardLabel
-				font.pointSize: 13
 			}
 			Rectangle {
 				width: 200
@@ -252,39 +256,31 @@ Page {
 		}
 		Label {
 			id: statusLabel
-			font.pointSize: 13
 		}
 		Row {
 			id: packagesRow
 			visible: false
 			Label {
 				text: 'Package info (got/unk/total) '
-				font.pointSize: 13
 			}
 			Label {
 				id: packagesGot
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: packagesUnk
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: packagesTotal
-				font.pointSize: 13
 			}
 		}
 		Label {
 			id: accessTokens
-			font.pointSize: 13
 			visible: false
 		}
 		Row {
@@ -292,27 +288,21 @@ Page {
 			visible: false
 			Label {
 				text: 'App info (got/unk/total) '
-				font.pointSize: 13
 			}
 			Label {
 				id: appsGot
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: appsUnk
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: appsTotal
-				font.pointSize: 13
 			}
 		}
 		Row {
@@ -320,35 +310,27 @@ Page {
 			visible: false
 			Label {
 				text: 'Depots (total/needed/got/error) '
-				font.pointSize: 13
 			}
 			Label {
 				id: depotsTotal
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: depotsNeeded
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: depotsGot
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: depotsError
-				font.pointSize: 13
 			}
 		}
 		Row {
@@ -356,51 +338,39 @@ Page {
 			visible: false
 			Label {
 				text: 'Manifests (total/needed/got code/code error/got/error) '
-				font.pointSize: 13
 			}
 			Label {
 				id: manifestsTotal
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: manifestsNeeded
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: manifestsGotCode
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: manifestsErrorCode
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: manifestsGot
-				font.pointSize: 13
 			}
 			Label {
 				text: ' / '
-				font.pointSize: 13
 			}
 			Label {
 				id: manifestsError
-				font.pointSize: 13
 			}
 		}
 	}

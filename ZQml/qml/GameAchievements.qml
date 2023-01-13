@@ -7,10 +7,17 @@ import ZGui 1.0
 Page {
 	ColumnLayout {
 		anchors.fill: parent
-		Text {
+		Button {
+			property bool byName: true
+			Layout.alignment: Qt.AlignHCenter
+			text: byName ? qsTr('Sort by date') : qsTr('Sort by name')
+			onClicked: {
+				byName = !byName
+				ZAchievements.resort(byName)
+			}
+		}
+		Label {
 			text: ZAchievements.achieved + ' / ' + ZAchievements.total
-			color: Material.color(Material.Grey)
-			font.pixelSize: 15
 			Layout.alignment: Qt.AlignHCenter
 		}
 		ListView {

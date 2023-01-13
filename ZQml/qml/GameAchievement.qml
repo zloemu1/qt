@@ -36,27 +36,21 @@ Rectangle {
 				id: col1
 				Layout.leftMargin: 5
 				Layout.fillWidth: true
-				Text {
+				Label {
 					id: name
 					text: display.name
-					color: Material.color(Material.Grey)
-					font.pixelSize: 15
 				}
-				Text {
+				Label {
 					id: descr
 					text: display.descr
-					color: Material.color(Material.Grey)
-					font.pixelSize: 13
 					wrapMode: Text.WordWrap
 					width: parent.width
 					visible: text.length > 0
 				}
 			}
-			Text {
+			Label {
 				id: datetxt
 				Layout.rightMargin: 5
-				color: Material.color(Material.Grey)
-				font.pixelSize: 13
 			}
 		}
 	}

@@ -15,6 +15,8 @@ Rectangle {
 		{
 			if (stateChanged)
 			{
+				columnFiles.visible = display.state != 9; //ZGAME_STATE_INSTALLING
+				columnData.visible = display.state != 9; //ZGAME_STATE_INSTALLING
 				statusText.text = gameStateStr(display.state)
 				progressFiles.visible = filesChanged
 				progressLocal.visible = localChanged
@@ -101,68 +103,60 @@ Rectangle {
 			spacing: 10
 			Label {
 				text: display.name
-				font.pointSize: 13
 			}
 			Column {
 				Layout.alignment: Qt.AlignHCenter
 				Label {
 					id: statusText
 					text: gameStateStr(display.state)
-					font.pointSize: 13
 				}
 				Row {
+					id: columnFiles
 					Label {
 						text: "Files: "
-						font.pointSize: 13
 					}
 					Label {
 						id: filesText
 						text: display.files
-						font.pointSize: 13
 					}
 					Label {
 						id: filesTotalText
 						text: "/" + display.filesTotal
-						font.pointSize: 13
 					}
 				}
 			}
 			Column {
+				id: columnData
 				Layout.alignment: Qt.AlignRight
 				Row {
 					Label {
 						text: "Downloaded: "
-						font.pointSize: 13
 					}
 					Label {
 						id: sizeRemoteText
 						text: ZQt.formattedDataSize(display.sizeRemote)
-						font.pointSize: 13
 					}
 					Label {
 						id: sizeRemoteTotalText
 						text: "/" + ZQt.formattedDataSize(display.sizeRemoteTotal)
-						font.pointSize: 13
 					}
 				}
 				Row {
 					Label {
 						text: "Size local: "
-						font.pointSize: 13
 					}
 					Label {
 						id: sizeLocalText
 						text: ZQt.formattedDataSize(display.sizeLocal)
-						font.pointSize: 13
 					}
 					Label {
 						id: sizeLocalTotalText
 						text: "/" + ZQt.formattedDataSize(display.sizeLocalTotal)
-						font.pointSize: 13
 					}
 				}
 			}
 			Button {
+				Layout.alignment: Qt.AlignRight
 				text: "Cancel"
 				onClicked: ZGames.cancel(decoration.id) //decoration is just another role, because display used in button
 			}

@@ -103,25 +103,17 @@ StackLayout {
 							anchors.leftMargin: 5
 							anchors.left: parent.left
 							anchors.verticalCenter: parent.verticalCenter
-							Text {
+							Label {
 								text: display.name
-								color: Material.color(Material.Grey)
-								font.pixelSize: 15
 							}
-							Text {
+							Label {
 								id: sysLabel
-								color: Material.color(Material.Grey)
-								font.pixelSize: 13
 							}
-							Text {
+							Label {
 								id: stateText
-								color: Material.color(Material.Grey)
-								font.pixelSize: 13
 							}
-							Text {
+							Label {
 								id: paidLabel
-								color: Material.color(Material.Grey)
-								font.pixelSize: 13
 							}
 						}
 					}

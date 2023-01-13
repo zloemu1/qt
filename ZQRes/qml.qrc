@@ -29,6 +29,40 @@
         <file>bf3/maps/xp5_002.jpg</file>
         <file>bf3/maps/xp5_003.jpg</file>
         <file>bf3/maps/xp5_004.jpg</file>
+        <file>bf4/maps/mp_abandoned.jpg</file>
+        <file>bf4/maps/mp_damage.jpg</file>
+        <file>bf4/maps/mp_flooded.jpg</file>
+        <file>bf4/maps/mp_journey.jpg</file>
+        <file>bf4/maps/mp_naval.jpg</file>
+        <file>bf4/maps/mp_playground.jpg</file>
+        <file>bf4/maps/mp_prison.jpg</file>
+        <file>bf4/maps/mp_resort.jpg</file>
+        <file>bf4/maps/mp_siege.jpg</file>
+        <file>bf4/maps/mp_thedish.jpg</file>
+        <file>bf4/maps/mp_tremors.jpg</file>
+        <file>bf4/maps/xp0_caspian.jpg</file>
+        <file>bf4/maps/xp0_firestorm.jpg</file>
+        <file>bf4/maps/xp0_metro.jpg</file>
+        <file>bf4/maps/xp0_oman.jpg</file>
+        <file>bf4/maps/xp1_001.jpg</file>
+        <file>bf4/maps/xp1_002.jpg</file>
+        <file>bf4/maps/xp1_003.jpg</file>
+        <file>bf4/maps/xp1_004.jpg</file>
+        <file>bf4/maps/xp2_001.jpg</file>
+        <file>bf4/maps/xp2_002.jpg</file>
+        <file>bf4/maps/xp2_003.jpg</file>
+        <file>bf4/maps/xp2_004.jpg</file>
+        <file>bf4/maps/xp3_marketpl.jpg</file>
+        <file>bf4/maps/xp3_prpganda.jpg</file>
+        <file>bf4/maps/xp3_urbangdn.jpg</file>
+        <file>bf4/maps/xp3_wtrfront.jpg</file>
+        <file>bf4/maps/xp4_arctic.jpg</file>
+        <file>bf4/maps/xp4_subbase.jpg</file>
+        <file>bf4/maps/xp4_titan.jpg</file>
+        <file>bf4/maps/xp4_wlkrftry.jpg</file>
+        <file>bf4/maps/xp5_night_01.jpg</file>
+        <file>bf4/maps/xp6_cmp.jpg</file>
+        <file>bf4/maps/xp7_valley.jpg</file>
         <file>fonts/MaterialIcons-Regular.ttf</file>
         <file>fonts/NotoSans-Regular.ttf</file>
     </qresource>

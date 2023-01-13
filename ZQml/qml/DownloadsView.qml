@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.15
 import ZGui 1.0
 
 Page {
+	property int dlgame: 0
 	Component.onCompleted: {
 		if (ZGames.isPaused)
 			buttonPause.text = qsTr('Paused')
@@ -12,6 +13,42 @@ Page {
 	}
 	Connections {
 		target: ZGames
+		function onSignalGCDownloadStarted(game, totalSizeDl, totalSizeWr, files)
+		{
+			dlgame = game
+			speedDownload.text = '0'
+			speedWrite.text = '0'
+			speeds.visible = true
+		}
+		function onSignalGCDownloadError(game, stage)
+		{
+			dlgame = 0;
+			speeds.visible = false
+		}
+		function onSignalGCDownloadDone(game)
+		{
+			dlgame = 0;
+			speeds.visible = false
+		}
+		function onSignalGCDownloadSpeeds(speedDl, speedWr)
+		{
+			speedDownload.text = speedDl
+			speedWrite.text = speedWr
+		}
+		function onSignalGCCancelled(game)
+		{
+			if (dlgame != game)
+				return
+			dlgame = 0;
+			speeds.visible = false
+		}
+		function onSignalGCRemoved(game)
+		{
+			if (dlgame != game)
+				return
+			dlgame = 0;
+			speeds.visible = false
+		}
 		function onSignalGCPaused(paused)
 		{
 			switch(paused)
@@ -33,10 +70,37 @@ Page {
 	}
 	ColumnLayout {
 		anchors.fill: parent
-		Button {
-			Layout.alignment: Qt.AlignHCenter
-			id: buttonPause
-			onClicked: ZGames.pause()
+		Item {
+			Layout.fillWidth: true
+			implicitHeight: childrenRect.height
+			Button {
+				anchors.horizontalCenter: parent.horizontalCenter
+				id: buttonPause
+				onClicked: ZGames.pause()
+			}
+			Column {
+				anchors.right: parent.right
+				id: speeds
+				visible: false
+				Row {
+					Label {
+						text: "Download speed: "
+					}
+					Label {
+						id: speedDownload
+						text: '0'
+					}
+				}
+				Row {
+					Label {
+						text: "Write speed: "
+					}
+					Label {
+						id: speedWrite
+						text: '0'
+					}
+				}
+			}
 		}
 		ListView {
 			id: dllist

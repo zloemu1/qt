@@ -4,12 +4,44 @@ import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
 import ZGui 1.0
 
+/*
+	QString name;
+	quint32 id, GSET, TCAP;
+	quint8 GSTA, PMAX, QCAP, PCAP;
+	QString bannerurl, country, description, level, levelname, levellocation, maps, mapsinfo, message, mod, mode, preset, pb, region;
+	bool osls, v3ca, v3sp, vaba, vffi, vhud, vkca, vmin, vmsp, vnta, vrhe, vvsa;
+	quint16 gmwp, vnit, vrtm, vtkc, vtkk; //number
+	quint16 vbdm, vgmc, vpmd, vprt, vshe, vvsd; //percent
+	QStringList players;
+*/
+
 Column { //layout will break text with wrap
-	property var zsrv: null
+	anchors.fill: parent
+	anchors.rightMargin: scrollView.contentHeight > scrollView.height ? 10 : 0
 	spacing: 5
-	Button {
-		text: 'Back'
-		onClicked: serverDetails(-1)
+	RowLayout {
+		spacing: 3
+		anchors.left: parent.left
+		anchors.right: parent.right
+		Button {
+			text: 'Back'
+			onClicked: serverDetails(null)
+		}
+		Button {
+			Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+			implicitHeight: 50
+			implicitWidth: 50
+			text: "\ue037"
+			font.family: "Material Icons"
+			font.pointSize: 15
+			onClicked: ZGameServers.startBF3(zgame.id, decoration.id)
+			enabled: ZGames.runnedGame === 0
+			ToolTip {
+				visible: parent.hovered
+				delay: 1000
+				text: qsTr('Join')
+			}
+		}
 	}
 	RowLayout {
 		anchors.left: parent.left
@@ -18,28 +50,30 @@ Column { //layout will break text with wrap
 			source: '/bf3/maps/' + zsrv.level + '.jpg'
 			fillMode: Image.PreserveAspectFit
 		}
-		Text {
+		Column {
 			Layout.fillWidth: true
-			color: Material.color(Material.Grey)
-			font.pixelSize: 15
-			text: zsrv.name
-			wrapMode: Text.Wrap
+			Label {
+				text: zsrv.name
+				wrapMode: Text.Wrap
+			}
+			Label {
+				text: modeNameBF(zsrv.mode)
+			}
+			Label {
+				text: zsrv.levelname
+			}
 		}
 	}
-	Text {
+	Label {
 		anchors.left: parent.left
 		anchors.right: parent.right
-		color: Material.color(Material.Grey)
-		font.pixelSize: 15
 		text: zsrv.message
 		visible: zsrv.message.length > 0
 		wrapMode: Text.Wrap
 	}
-	Text {
+	Label {
 		anchors.left: parent.left
 		anchors.right: parent.right
-		color: Material.color(Material.Grey)
-		font.pixelSize: 15
 		text: zsrv.description
 		visible: zsrv.description.length > 0
 		wrapMode: Text.Wrap
@@ -50,40 +84,29 @@ Column { //layout will break text with wrap
 		spacing: 3
 		Column {
 			id: block1
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('osls') + ' ' + zsrv.osls
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('v3ca') + ' ' + zsrv.v3ca
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('v3sp') + ' ' + zsrv.v3sp
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vaba') + ' ' + zsrv.vaba
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vffi') + ' ' + zsrv.vffi
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vhud') + ' ' + zsrv.vhud
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vkca') + ' ' + zsrv.vkca
+			}
+			Label {
+				text: qsTr('vmin') + ' ' + zsrv.vmin
 			}
 		}
 		Rectangle {
@@ -93,39 +116,28 @@ Column { //layout will break text with wrap
 			radius: 1
 		}
 		Column {
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
-				text: qsTr('vmin') + ' ' + zsrv.vmin
-			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vmsp') + ' ' + zsrv.vmsp
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vnta') + ' ' + zsrv.vnta
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vrhe') + ' ' + zsrv.vrhe
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vvsa') + ' ' + zsrv.vvsa
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
+				text: qsTr('gmwp') + ' ' + zsrv.gmwp
+			}
+			Label {
 				text: qsTr('vnit') + ' ' + zsrv.vnit
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
+				text: qsTr('vrtm') + ' ' + zsrv.vrtm
+			}
+			Label {
 				text: qsTr('vtkc') + ' ' + zsrv.vtkc
 			}
 		}
@@ -136,39 +148,25 @@ Column { //layout will break text with wrap
 			radius: 1
 		}
 		Column {
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vtkk') + ' ' + zsrv.vtkk
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vbdm') + ' ' + zsrv.vbdm
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vgmc') + ' ' + zsrv.vgmc
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vpmd') + ' ' + zsrv.vpmd
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vprt') + ' ' + zsrv.vprt
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vshe') + ' ' + zsrv.vshe
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: qsTr('vvsd') + ' ' + zsrv.vvsd
 			}
 		}
@@ -179,24 +177,16 @@ Column { //layout will break text with wrap
 			radius: 1
 		}
 		Column {
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: 'country ' + zsrv.country
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: 'region ' + zsrv.region
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: 'preset ' + zsrv.preset
 			}
-			Text {
-				color: Material.color(Material.Grey)
-				font.pixelSize: 15
+			Label {
 				text: 'pb ' + zsrv.pb
 				visible: zsrv.pb.length > 0
 			}
@@ -217,9 +207,11 @@ Column { //layout will break text with wrap
 				radius: 5
 			}
 		}
-		delegate: Text {
-			color: Material.color(Material.Grey)
-			font.pixelSize: 15
+		delegate: TextEdit {
+			color: Material.foreground
+			font.pointSize: 12
+			readOnly: true
+			selectByMouse: true
 			text: modelData
 		}
 	}
