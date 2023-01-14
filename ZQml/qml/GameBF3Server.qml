@@ -16,9 +16,12 @@ import ZGui 1.0
 */
 
 Column { //layout will break text with wrap
-	anchors.fill: parent
+	anchors.left: parent.left
+	anchors.right: parent.right
+//	anchors.fill: parent
 	anchors.rightMargin: scrollView.contentHeight > scrollView.height ? 10 : 0
 	spacing: 5
+	Component.onCompleted: scrollView.contentHeight = height
 	RowLayout {
 		spacing: 3
 		anchors.left: parent.left
@@ -34,7 +37,7 @@ Column { //layout will break text with wrap
 			text: "\ue037"
 			font.family: "Material Icons"
 			font.pointSize: 15
-			onClicked: ZGameServers.startBF3(zgame.id, decoration.id)
+			onClicked: ZGameServers.startBF3(zgame.id, zsrv.id)
 			enabled: ZGames.runnedGame === 0
 			ToolTip {
 				visible: parent.hovered
@@ -194,7 +197,7 @@ Column { //layout will break text with wrap
 	}
 	ListView {
 		id: players
-		height: contentHeight > 250 ? 250 : contentHeight
+		implicitHeight: contentHeight
 		implicitWidth: contentItem.childrenRect.width + (contentHeight > height ? 10 : 0)
 		model: zsrv.players
 		clip: true

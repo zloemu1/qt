@@ -29,7 +29,7 @@ StackLayout {
 		if (srv)
 		{
 			zsrv = srv
-			sv = serverView.createObject(scrollView)
+			sv = serverView.createObject(scrollView.contentItem.contentItem)
 			if (sv.status === Component.Error)
 				console.log('Create bf3 server view error ' + sv.errorString())
 			else
