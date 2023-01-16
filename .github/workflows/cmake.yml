@@ -18,4 +18,5 @@ jobs:
       with:
         image: zlofenix/emubuilder:qt5
         name: builder
-        args: sh -c 'mkdir ${{github.workspace}}/build && cd ${{github.workspace}}/build && i686-w64-mingw32.shared-cmake .. && i686-w64-mingw32.shared-cmake ..'
+        options: -v ${{github.workspace}}:/srv
+        args: sh -c 'mkdir /srv/build && cd /srv/build && i686-w64-mingw32.shared-cmake .. && i686-w64-mingw32.shared-cmake ..'
