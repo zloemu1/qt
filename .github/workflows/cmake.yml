@@ -1,0 +1,20 @@
+name: CMake
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: zlofenix/emubuilder:qt5
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Configure CMake
+      run: mkdir build && i686-w64-mingw32.shared-cmake -B ${{github.workspace}}/build
+
+    - name: Build
+      run: i686-w64-mingw32.shared-cmake --build ${{github.workspace}}/build
