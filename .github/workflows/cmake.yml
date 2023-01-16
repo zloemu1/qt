@@ -18,4 +18,4 @@ jobs:
       with:
         image: zlofenix/emubuilder:qt5
         name: builder
-        args: 'mkdir build && cd build && i686-w64-mingw32.shared-cmake .. && i686-w64-mingw32.shared-cmake ..'
+        args: sh -c 'mkdir build && cd build && i686-w64-mingw32.shared-cmake .. && i686-w64-mingw32.shared-cmake ..'
