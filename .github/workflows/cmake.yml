@@ -8,13 +8,14 @@ on:
 
 jobs:
   build:
-    runs-on: zlofenix/emubuilder:qt5
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Configure CMake
-      run: mkdir build && i686-w64-mingw32.shared-cmake -B ${{github.workspace}}/build
-
     - name: Build
-      run: i686-w64-mingw32.shared-cmake --build ${{github.workspace}}/build
+      uses: tj-actions/docker-run@v2.1.0
+      with:
+        image: zlofenix/emubuilder:qt5
+        name: builder
+        args: mkdir build && cd build && i686-w64-mingw32.shared-cmake .. && i686-w64-mingw32.shared-cmake ..
