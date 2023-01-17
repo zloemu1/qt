@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
 import ZGui 1.0
 
@@ -113,10 +114,16 @@ Page {
 			boundsBehavior: Flickable.StopAtBounds
 			ScrollBar.vertical: ScrollBar {
 				policy: dllist.contentHeight > dllist.height ? ScrollBar.AlwaysOn : ScrollBar.AlwaysOff
+				implicitWidth: 10
+				contentItem: Rectangle {
+					color: Material.accent
+					radius: 5
+				}
 			}
 			highlightMoveVelocity: -1
 			spacing: 3
 			delegate: DownloadsItem {
+				anchors.rightMargin: dllist.contentHeight > dllist.height ? 15 : 10
 			}
 		}
 	}

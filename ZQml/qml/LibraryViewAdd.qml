@@ -50,7 +50,7 @@ ColumnLayout {
 		Label {
 			text: 'Install location'
 		}
-		ComboBox {
+		AutoResizingComboBox {
 			id: installFolderCombo
 			model: ZQt.getInstallLocationsModel()
 			textRole: 'display'

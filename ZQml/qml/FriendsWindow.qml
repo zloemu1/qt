@@ -494,7 +494,10 @@ enabled: false
 			Button {
 				Layout.alignment: Qt.AlignHCenter
 				text: qsTr('Back')
-				onClicked: stackLayout.currentIndex = 0
+				onClicked: {
+					ZFriendSearch.clear()
+					stackLayout.currentIndex = 0
+				}
 			}
 		}
 	}

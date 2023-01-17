@@ -72,13 +72,21 @@ Page {
 				radius: 5
 			}
 		}
-		property int spacing: 5
-		cellWidth: 200 + spacing
-		cellHeight: 280 + spacing
+
+		property int itemWidth: 200
+		readonly property int horizontalItemsCount: Math.floor(grid.width / itemWidth)
+		readonly property int horizontalSpacing: Math.floor((grid.width - itemWidth * horizontalItemsCount) / horizontalItemsCount)
+
+		property int itemHeight: 280
+		readonly property int verticalSpacing: 5
+
+		cellWidth: itemWidth + horizontalSpacing
+		cellHeight: itemHeight + verticalSpacing
+
 		delegate: MouseArea {
 				id: ma
-				height: grid.cellHeight - grid.spacing
-				width: grid.cellWidth - grid.spacing
+				height: grid.itemHeight
+				width: grid.itemWidth
 				acceptedButtons: Qt.LeftButton | Qt.RightButton
 				onClicked: if (decoration.owned) gameMenu.show(decoration.id, decoration.sys)
 				hoverEnabled: true
