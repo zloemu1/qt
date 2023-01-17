@@ -2,22 +2,50 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
+    <name>DownloadsItem</name>
+    <message>
+        <location filename="qml/DownloadsItem.qml" line="116"/>
+        <source>Files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/DownloadsItem.qml" line="133"/>
+        <source>Downloaded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/DownloadsItem.qml" line="146"/>
+        <source>Size local</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DownloadsView</name>
     <message>
-        <location filename="qml/DownloadsView.qml" line="10"/>
-        <location filename="qml/DownloadsView.qml" line="61"/>
+        <location filename="qml/DownloadsView.qml" line="11"/>
+        <location filename="qml/DownloadsView.qml" line="62"/>
         <source>Paused</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/DownloadsView.qml" line="12"/>
-        <location filename="qml/DownloadsView.qml" line="57"/>
+        <location filename="qml/DownloadsView.qml" line="13"/>
+        <location filename="qml/DownloadsView.qml" line="58"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/DownloadsView.qml" line="65"/>
+        <location filename="qml/DownloadsView.qml" line="66"/>
         <source>Waiting for pause</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/DownloadsView.qml" line="88"/>
+        <source>Download speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/DownloadsView.qml" line="97"/>
+        <source>Write speed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -172,122 +200,122 @@
 <context>
     <name>GameBF3Server</name>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="42"/>
+        <location filename="qml/GameBF3Server.qml" line="45"/>
         <source>Join</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="88"/>
+        <location filename="qml/GameBF3Server.qml" line="91"/>
         <source>osls</source>
         <translation>onlySquadLeaderSpawn</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="91"/>
+        <location filename="qml/GameBF3Server.qml" line="94"/>
         <source>v3ca</source>
         <translation>3pCam</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="94"/>
+        <location filename="qml/GameBF3Server.qml" line="97"/>
         <source>v3sp</source>
         <translation>3dSpotting</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="97"/>
+        <location filename="qml/GameBF3Server.qml" line="100"/>
         <source>vaba</source>
         <translation>autoBalance</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="100"/>
+        <location filename="qml/GameBF3Server.qml" line="103"/>
         <source>vffi</source>
         <translation>friendlyFire</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="103"/>
+        <location filename="qml/GameBF3Server.qml" line="106"/>
         <source>vhud</source>
         <translation>hud</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="106"/>
+        <location filename="qml/GameBF3Server.qml" line="109"/>
         <source>vkca</source>
         <translation>killCam</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="109"/>
+        <location filename="qml/GameBF3Server.qml" line="112"/>
         <source>vmin</source>
         <translation>miniMap</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="120"/>
+        <location filename="qml/GameBF3Server.qml" line="123"/>
         <source>vmsp</source>
         <translation>miniMapSpotting</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="123"/>
+        <location filename="qml/GameBF3Server.qml" line="126"/>
         <source>vnta</source>
         <translation>nameTag</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="126"/>
+        <location filename="qml/GameBF3Server.qml" line="129"/>
         <source>vrhe</source>
         <translation>regenerateHealth</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="129"/>
+        <location filename="qml/GameBF3Server.qml" line="132"/>
         <source>vvsa</source>
         <translation>vehicleSpawnAllowed</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="132"/>
+        <location filename="qml/GameBF3Server.qml" line="135"/>
         <source>gmwp</source>
         <translation>gunMasterWeaponsPreset</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="135"/>
+        <location filename="qml/GameBF3Server.qml" line="138"/>
         <source>vnit</source>
         <translation>idleTimeout</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="138"/>
+        <location filename="qml/GameBF3Server.qml" line="141"/>
         <source>vrtm</source>
         <translation>ctfRoundTimeModifier</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="141"/>
+        <location filename="qml/GameBF3Server.qml" line="144"/>
         <source>vtkc</source>
         <translation>teamKillCountForKick</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="152"/>
+        <location filename="qml/GameBF3Server.qml" line="155"/>
         <source>vtkk</source>
         <translation>teamKillKickForBan</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="155"/>
+        <location filename="qml/GameBF3Server.qml" line="158"/>
         <source>vbdm</source>
         <translation>bulletDamage</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="158"/>
+        <location filename="qml/GameBF3Server.qml" line="161"/>
         <source>vgmc</source>
         <translation>gameModeCounter</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="161"/>
+        <location filename="qml/GameBF3Server.qml" line="164"/>
         <source>vpmd</source>
         <translation>playerManDownTime</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="164"/>
+        <location filename="qml/GameBF3Server.qml" line="167"/>
         <source>vprt</source>
         <translation>playerRespawnTime</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="167"/>
+        <location filename="qml/GameBF3Server.qml" line="170"/>
         <source>vshe</source>
         <translation>soldierHealth</translation>
     </message>
     <message>
-        <location filename="qml/GameBF3Server.qml" line="170"/>
+        <location filename="qml/GameBF3Server.qml" line="173"/>
         <source>vvsd</source>
         <translation>vehicleSpawnDelay</translation>
     </message>
@@ -308,207 +336,207 @@
 <context>
     <name>GameBF4Server</name>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="55"/>
+        <location filename="qml/GameBF4Server.qml" line="57"/>
         <source>Join</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="69"/>
+        <location filename="qml/GameBF4Server.qml" line="71"/>
         <source>Spectator</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="116"/>
+        <location filename="qml/GameBF4Server.qml" line="118"/>
         <source>aaro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="119"/>
+        <location filename="qml/GameBF4Server.qml" line="121"/>
         <source>aasl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="122"/>
+        <location filename="qml/GameBF4Server.qml" line="124"/>
         <source>osls</source>
         <translation type="unfinished">onlySquadLeaderSpawn</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="125"/>
+        <location filename="qml/GameBF4Server.qml" line="127"/>
         <source>v3ca</source>
         <translation type="unfinished">3pCam</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="128"/>
+        <location filename="qml/GameBF4Server.qml" line="130"/>
         <source>v3sp</source>
         <translation type="unfinished">3dSpotting</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="131"/>
+        <location filename="qml/GameBF4Server.qml" line="133"/>
         <source>vaba</source>
         <translation type="unfinished">autoBalance</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="134"/>
+        <location filename="qml/GameBF4Server.qml" line="136"/>
         <source>vcmd</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="137"/>
+        <location filename="qml/GameBF4Server.qml" line="139"/>
         <source>vffi</source>
         <translation type="unfinished">friendlyFire</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="140"/>
+        <location filename="qml/GameBF4Server.qml" line="142"/>
         <source>vfrm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="143"/>
+        <location filename="qml/GameBF4Server.qml" line="145"/>
         <source>vhit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="146"/>
+        <location filename="qml/GameBF4Server.qml" line="148"/>
         <source>vhud</source>
         <translation type="unfinished">hud</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="149"/>
+        <location filename="qml/GameBF4Server.qml" line="151"/>
         <source>vicc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="152"/>
+        <location filename="qml/GameBF4Server.qml" line="154"/>
         <source>vinb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="163"/>
+        <location filename="qml/GameBF4Server.qml" line="165"/>
         <source>vkca</source>
         <translation type="unfinished">killCam</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="166"/>
+        <location filename="qml/GameBF4Server.qml" line="168"/>
         <source>vmin</source>
         <translation type="unfinished">miniMap</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="169"/>
+        <location filename="qml/GameBF4Server.qml" line="171"/>
         <source>vmsp</source>
         <translation type="unfinished">miniMapSpotting</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="172"/>
+        <location filename="qml/GameBF4Server.qml" line="174"/>
         <source>vnta</source>
         <translation type="unfinished">nameTag</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="175"/>
+        <location filename="qml/GameBF4Server.qml" line="177"/>
         <source>vrhe</source>
         <translation type="unfinished">regenerateHealth</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="178"/>
+        <location filename="qml/GameBF4Server.qml" line="180"/>
         <source>vsbb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="181"/>
+        <location filename="qml/GameBF4Server.qml" line="183"/>
         <source>vvsa</source>
         <translation type="unfinished">vehicleSpawnAllowed</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="184"/>
+        <location filename="qml/GameBF4Server.qml" line="186"/>
         <source>gmwp</source>
         <translation type="unfinished">gunMasterWeaponsPreset</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="187"/>
+        <location filename="qml/GameBF4Server.qml" line="189"/>
         <source>vmpl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="190"/>
+        <location filename="qml/GameBF4Server.qml" line="192"/>
         <source>vmst</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="193"/>
+        <location filename="qml/GameBF4Server.qml" line="195"/>
         <source>vnip</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="196"/>
+        <location filename="qml/GameBF4Server.qml" line="198"/>
         <source>vnit</source>
         <translation type="unfinished">idleTimeout</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="199"/>
+        <location filename="qml/GameBF4Server.qml" line="201"/>
         <source>vprb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="210"/>
+        <location filename="qml/GameBF4Server.qml" line="212"/>
         <source>vprc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="213"/>
+        <location filename="qml/GameBF4Server.qml" line="215"/>
         <source>vprp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="216"/>
+        <location filename="qml/GameBF4Server.qml" line="218"/>
         <source>vrlc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="219"/>
+        <location filename="qml/GameBF4Server.qml" line="221"/>
         <source>vrsp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="222"/>
+        <location filename="qml/GameBF4Server.qml" line="224"/>
         <source>vrtl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="225"/>
+        <location filename="qml/GameBF4Server.qml" line="227"/>
         <source>vtbr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="228"/>
+        <location filename="qml/GameBF4Server.qml" line="230"/>
         <source>vtkc</source>
         <translation type="unfinished">teamKillCountForKick</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="231"/>
+        <location filename="qml/GameBF4Server.qml" line="233"/>
         <source>vtkk</source>
         <translation type="unfinished">teamKillKickForBan</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="234"/>
+        <location filename="qml/GameBF4Server.qml" line="236"/>
         <source>vbdm</source>
         <translation type="unfinished">bulletDamage</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="237"/>
+        <location filename="qml/GameBF4Server.qml" line="239"/>
         <source>vgmc</source>
         <translation type="unfinished">gameModeCounter</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="240"/>
+        <location filename="qml/GameBF4Server.qml" line="242"/>
         <source>vprt</source>
         <translation type="unfinished">playerRespawnTime</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="243"/>
+        <location filename="qml/GameBF4Server.qml" line="245"/>
         <source>vshe</source>
         <translation type="unfinished">soldierHealth</translation>
     </message>
     <message>
-        <location filename="qml/GameBF4Server.qml" line="246"/>
+        <location filename="qml/GameBF4Server.qml" line="248"/>
         <source>vvsd</source>
         <translation type="unfinished">vehicleSpawnDelay</translation>
     </message>

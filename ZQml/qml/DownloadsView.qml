@@ -85,7 +85,7 @@ Page {
 				visible: false
 				Row {
 					Label {
-						text: "Download speed: "
+						text: qsTr('Download speed') + ': '
 					}
 					Label {
 						id: speedDownload
@@ -94,7 +94,7 @@ Page {
 				}
 				Row {
 					Label {
-						text: "Write speed: "
+						text: qsTr('Write speed') + ': '
 					}
 					Label {
 						id: speedWrite
@@ -123,7 +123,7 @@ Page {
 			highlightMoveVelocity: -1
 			spacing: 3
 			delegate: DownloadsItem {
-				anchors.rightMargin: dllist.contentHeight > dllist.height ? 15 : 10
+				anchors.rightMargin: dllist.contentHeight > dllist.height ? 10 : 0
 			}
 		}
 	}

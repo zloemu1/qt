@@ -3,11 +3,11 @@ import QtQuick.Controls 2.2
 
 // https://stackoverflow.com/questions/45029968/how-do-i-set-the-combobox-width-to-fit-the-largest-item
 ComboBox {
-	property int textWidth
-	property int desiredWidth : leftPadding + textWidth + indicator.width + rightPadding
-	property int maximumWidth : parent.width
-
-	implicitWidth: desiredWidth < maximumWidth ? desiredWidth : maximumWidth
+	property int textWidth: 0
+//	property int desiredWidth: leftPadding + textWidth + indicator.width + rightPadding
+//	property int maximumWidth: parent.width
+//	implicitWidth: desiredWidth < maximumWidth ? desiredWidth : maximumWidth
+	implicitWidth: leftPadding + textWidth + indicator.width + rightPadding
 
 	TextMetrics {
 		id: popupMetrics

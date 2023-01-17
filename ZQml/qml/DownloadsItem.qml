@@ -113,7 +113,7 @@ Rectangle {
 				Row {
 					id: columnFiles
 					Label {
-						text: "Files: "
+						text: qsTr('Files') + ': '
 					}
 					Label {
 						id: filesText
@@ -130,7 +130,7 @@ Rectangle {
 				Layout.alignment: Qt.AlignRight
 				Row {
 					Label {
-						text: "Downloaded: "
+						text: qsTr('Downloaded') + ': '
 					}
 					Label {
 						id: sizeRemoteText
@@ -143,7 +143,7 @@ Rectangle {
 				}
 				Row {
 					Label {
-						text: "Size local: "
+						text: qsTr('Size local') + ': '
 					}
 					Label {
 						id: sizeLocalText
