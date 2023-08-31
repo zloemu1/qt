@@ -27,7 +27,7 @@ Column { //layout will break text with wrap
 		anchors.left: parent.left
 		anchors.right: parent.right
 		Button {
-			text: 'Back'
+			text: qsTr('Back')
 			onClicked: serverDetails(null)
 		}
 		Button {

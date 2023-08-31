@@ -15,46 +15,28 @@ ToolBar {
 		property int tstatus
 		MenuItem {
 			text: qsTr('Online')
-			onClicked: ZUser.status = 1;
+			onTriggered: ZUser.status = 1;
 			enabled: statusMenu.tstatus !== 1
 		}
 		MenuItem {
 			text: qsTr('Away')
-			onClicked: ZUser.status = 2;
+			onTriggered: ZUser.status = 2;
 			enabled: statusMenu.tstatus !== 2
 		}
 		MenuItem {
 			text: qsTr('DND')
-			onClicked: ZUser.status = 3;
+			onTriggered: ZUser.status = 3;
 			enabled: statusMenu.tstatus !== 3
 		}
 		MenuItem {
 			text: qsTr('Invisible')
-			onClicked: ZUser.status = 0;
+			onTriggered: ZUser.status = 0;
 			enabled: statusMenu.tstatus !== 0
 		}
 	}
 	RowLayout {
 		anchors.fill: parent
 		spacing: 5
-/*
-		Rectangle {
-			Layout.leftMargin: 10
-			Layout.rightMargin: 15
-			Layout.preferredHeight: parent.height * 0.6
-			Layout.preferredWidth: height
-			radius: 5
-			color: "#333331"
-			Text {
-				anchors.horizontalCenter: parent.horizontalCenter
-				anchors.verticalCenter: parent.verticalCenter
-				text: "Z"
-				color: "#DE504F"
-				font.pixelSize: parent.height * 0.9
-				font.bold: true
-			}
-		}
-*/
 		TabBar {
 			id: tab
 			Layout.topMargin: 10
@@ -63,7 +45,8 @@ ToolBar {
 			TabButton {
 				onClicked: setPage('news')
 				text: qsTr('News')
-				width: implicitWidth
+				width: visible ? implicitWidth : 0
+visible: false
 			}
 			TabButton {
 				onClicked: setPage('games')
@@ -100,7 +83,8 @@ ToolBar {
 			TabButton {
 				onClicked: setPage('community')
 				text: 'Community'
-				width: implicitWidth
+				width: visible ? implicitWidth : 0
+visible: false
 			}
 			TabButton {
 				onClicked: setPage('settings')
@@ -141,6 +125,23 @@ ToolBar {
 			onClicked: {
 				friendsWindow.show()
 				friendsWindow.requestActivate()
+			}
+			Rectangle {
+				visible: ZFriends.incomingCount > 0
+				anchors.horizontalCenter: parent.contentItem.right
+				anchors.verticalCenter: parent.contentItem.top
+				color: Material.accent
+				radius: 8
+				width: childrenRect.width + 4
+				height: childrenRect.height
+				Text {
+					anchors.left: parent.left
+					anchors.leftMargin: 2
+					text: ZFriends.incomingCount
+					font.bold: true
+					font.pixelSize: 11
+					color: Material.foreground
+				}
 			}
 		}
 		Button {
@@ -196,10 +197,15 @@ ToolBar {
 		}
 */
 		Image {
-			source: "image://ZAvatar/" + ZUser.id
+			id: avatar
+			source: 'file:///' + ZFriends.getAvatar(0)
 			Layout.preferredWidth: height
 			Layout.maximumHeight: 40
 			Layout.maximumWidth: 40
+			Connections {
+				target: ZFriends
+				function onSignalAvatarUpdated(path) { avatar.source = ''; avatar.source = 'file:///' + path }
+			}
 		}
 
 		Column {

@@ -7,9 +7,7 @@ import ZGui 1.0
 Page {
 	id: pageGameInfo
 	Column {
-		id: xcol
-		anchors.left: parent.left
-		anchors.right: parent.right
+		anchors.fill: parent
 		Row {
 			Image {
 				source: zgame.cover
@@ -65,16 +63,21 @@ Page {
 				Label {
 					text: qsTr('Local version') + ': ' + zgame.localVersion
 				}
+				Button
+				{
+					text: 'Get size'
+					onClicked: text = zgame.getSize()
+				}
 				Row {
 					CheckBox {
 						checked: zgame.autoUpdate
-						enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
+						enabled: zgame.state === ZGames.STATE_INSTALLED || zgame.state === ZGames.STATE_OUTDATED || zgame.state === ZGames.STATE_BROKEN
 						text: 'Auto update'
 						onClicked: zgame.toggleAutoUpdate()
 					}
 					CheckBox {
 						checked: zgame.autoDlc
-						enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
+						enabled: zgame.state === ZGames.STATE_INSTALLED || zgame.state === ZGames.STATE_OUTDATED || zgame.state === ZGames.STATE_BROKEN
 						text: 'Auto install new DLC'
 						onClicked: zgame.toggleAutoDlc()
 					}
@@ -86,7 +89,7 @@ Page {
 				spacing: 5
 				Button {
 					id: runButton
-					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
+					enabled: zgame.state === ZGames.STATE_INSTALLED || zgame.state === ZGames.STATE_OUTDATED || zgame.state === ZGames.STATE_BROKEN
 					Component.onCompleted: {
 						if (ZGames.runnedGame)
 							runButton.text = qsTr('Kill')
@@ -117,7 +120,7 @@ Page {
 				}
 				AutoResizingComboBox {
 					id: launcherCombo
-					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
+					enabled: zgame.state === ZGames.STATE_INSTALLED || zgame.state === ZGames.STATE_OUTDATED || zgame.state === ZGames.STATE_BROKEN
 					model: zgame
 					textRole: 'display'
 					valueRole: 'toolTip'
@@ -133,45 +136,49 @@ Page {
 							launcherCombo.currentIndex = 0
 						popupGameCmd.show()
 					}
-					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
-				}
-			}
-			Item {
-				width: 1
-				height: 10
-			}
-			Row {
-				spacing: 5
-				Button {
-					text: qsTr('Repair')
-					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
-					onClicked: {
-						var res = zgame.repair()
-						if (res !== 0)
-							popupError.show('Repair failed: ' + res)
-					}
+					enabled: zgame.state === ZGames.STATE_INSTALLED || zgame.state === ZGames.STATE_OUTDATED || zgame.state === ZGames.STATE_BROKEN
 				}
 				Button {
-					text: qsTr('Update')
-					visible: ZGames.canUpdate
-					onClicked: {
-						var res = zgame.update()
-						if (res !== 0)
-							popupError.show('Update failed: ' + res)
-					}
-				}
-				Button {
-					text: qsTr('Change lang')
-					visible: zgame.locales.length > 1
-					enabled: zgame.state === 1
-					onClicked: popupLangChange.show()
-				}
-				Button {
-					text: qsTr('Remove')
-					enabled: zgame.state === 1 || zgame.state === 2 || zgame.state === 10
-					onClicked: {
-						installedGamesList.currentIndex = -1
-						dialogRemoveGame.open()
+					text: "\ue8b8"
+					font.family: "Material Icons"
+					font.pointSize: 15
+					onClicked: gameSettingsMenu.popup()
+					Menu {
+						id: gameSettingsMenu
+						MenuItem {
+							text: qsTr('Repair')
+							enabled: zgame.state === ZGames.STATE_INSTALLED || zgame.state === ZGames.STATE_OUTDATED || zgame.state === ZGames.STATE_BROKEN
+							onTriggered: {
+								var res = zgame.repair()
+								if (res !== 0)
+									popupError.show('Repair failed: ' + res)
+							}
+						}
+						MenuItem {
+							text: qsTr('Update')
+							visible: ZGames.canUpdate
+							height: visible ? implicitHeight : 0
+							onTriggered: {
+								var res = zgame.update()
+								if (res !== 0)
+									popupError.show('Update failed: ' + res)
+							}
+						}
+						MenuItem {
+							text: qsTr('Change lang')
+							visible: zgame.locales.length > 1
+							height: visible ? implicitHeight : 0
+							enabled: zgame.state === ZGames.STATE_INSTALLED
+							onTriggered: popupLangChange.show()
+						}
+						MenuItem {
+							text: qsTr('Remove')
+							enabled: zgame.state === ZGames.STATE_INSTALLED || zgame.state === ZGames.STATE_OUTDATED || zgame.state === ZGames.STATE_BROKEN
+							onTriggered: {
+								installedGamesList.currentIndex = -1
+								dialogRemoveGame.open()
+							}
+						}
 					}
 				}
 			}
@@ -208,26 +215,6 @@ Page {
 			text: zgame.size > 0 ? (Math.round(zgame.downloaded / zgame.size * 100) + '%') : 0
 		}
 */
-	}
-	ScrollView {
-		id: scrollView
-		anchors.left: parent.left
-		anchors.right: parent.right
-		anchors.top: xcol.bottom
-		anchors.bottom: parent.bottom
-		clip: true
-		ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-		ScrollBar.vertical.policy: scrollView.contentHeight > scrollView.height ? ScrollBar.AlwaysOn : ScrollBar.AlwaysOff
-		ScrollBar.vertical.implicitWidth: 10
-		ScrollBar.vertical.contentItem: Rectangle {
-			color: Material.accent
-			radius: 5
-		}
-		Label {
-			text: zgame.descr
-			wrapMode: Text.WordWrap
-			width: pageGameInfo.width - 10
-		}
 	}
 	Popup {
 		id: popupGameCmd
@@ -279,15 +266,16 @@ Page {
 		modal: true
 		function show()
 		{
-			ZQt.getLangSelectModel().fill(zgame.id)
+			ZQt.getModelLangGame().fillGame(zgame.id)
 			langCombo.currentIndex = langCombo.indexOfValue(zgame.locale)
+			langCombo.recalculateWidth()
 			popupLangChange.open()
 		}
 		ColumnLayout {
 			anchors.centerIn: parent
 			AutoResizingComboBox {
 				id: langCombo
-				model: ZQt.getLangSelectModel()
+				model: ZQt.getModelLangGame()
 				Layout.alignment: Qt.AlignHCenter
 				textRole: 'display'
 				valueRole: 'edit'

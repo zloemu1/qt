@@ -50,9 +50,19 @@ MouseArea {
 			}
 		}
 		Image {
-			source: "image://ZAvatar/" + display.id
+			id: avatar
+			cache: false
+			source: 'file:///' + ZFriends.getAvatar(display.id)
 			width: 32
 			height: 32
+			Connections {
+				target: display
+				function onSignalAvatar(path)
+				{
+					avatar.source = ''
+					avatar.source = 'file:///' + path
+				}
+			}
 		}
 		Column {
 			anchors.verticalCenter: parent.verticalCenter

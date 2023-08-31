@@ -3,9 +3,18 @@ import QtQuick.Window 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
+import QtWinExtras 1.15
 import ZGui 1.0
 
 ApplicationWindow {
+	TaskbarButton {
+		id: taskbarButton
+		progress.minimum: 0
+		progress.maximum: 100
+		progress.value: 0
+		progress.paused: false
+		progress.visible: false
+	}
 	id: rootWindow
 	visible: true
 	width: 1024
@@ -62,14 +71,14 @@ ApplicationWindow {
 	{
 		switch(status)
 		{
-			case 0:
-				return isOwn?'Invisible':'Offline';
-			case 1:
-				return 'Online';
-			case 2:
-				return 'Away';
-			case 3:
-				return 'DND';
+			case ZFriends.STATE_OFFLINE:
+				return isOwn?qsTr('Invisible'):qsTr('Offline');
+			case ZFriends.STATE_ONLINE:
+				return qsTr('Online');
+			case ZFriends.STATE_AWAY:
+				return qsTr('Away');
+			case ZFriends.STATE_DND:
+				return qsTr('DND');
 		}
 		return 'UNK';
 	}
@@ -98,27 +107,27 @@ ApplicationWindow {
 	{
 		switch(state)
 		{
-			case 0:
+			case ZGames.STATE_NOT_INSTALLED:
 				return qsTr('Not installed');
-			case 1:
+			case ZGames.STATE_INSTALLED:
 				return qsTr('Installed');
-			case 2:
+			case ZGames.STATE_OUTDATED:
 				return qsTr('Outdated');
-			case 3:
+			case ZGames.STATE_CHECKING:
 				return qsTr('Checking');
-			case 4:
+			case ZGames.STATE_CHECKING_FAST:
 				return qsTr('Checking fast');
-			case 5:
+			case ZGames.STATE_ALLOCATING:
 				return qsTr('Allocating');
-			case 6:
+			case ZGames.STATE_ALLOCATE_ERROR:
 				return qsTr('Allocate error');
-			case 7:
+			case ZGames.STATE_DOWNLOADING:
 				return qsTr('Downloading');
-			case 8:
+			case ZGames.STATE_DOWNLOAD_ERROR:
 				return qsTr('Download error');
-			case 9:
+			case ZGames.STATE_INSTALLING:
 				return qsTr('Installing');
-			case 10:
+			case ZGames.STATE_BROKEN:
 				return qsTr('Broken');
 			default:
 				return qsTr('Unknown');
@@ -152,7 +161,8 @@ ApplicationWindow {
 	}
 //
 	Component.onCompleted: setPage('games')
-	onClosing: Qt.quit()
+//	onClosing: Qt.quit()
+	onClosing: visible = false
 	header: TopBar {
 		id: topbar
 	}
@@ -165,7 +175,7 @@ ApplicationWindow {
 			color: Material.accent
 			Layout.fillWidth: true
 			height: childrenRect.height
-			Text {
+			Label {
 				id: connectStatusText
 				anchors.horizontalCenter: parent.horizontalCenter
 				font.bold: true
@@ -196,6 +206,28 @@ ApplicationWindow {
 			Layout.fillHeight: true
 			Layout.fillWidth: true
 		}
+		Rectangle {
+			id: baseUpdateStatus
+			visible: false
+			color: '#3B3B3B'
+			Layout.fillWidth: true
+			height: childrenRect.height
+			Row {
+				anchors.horizontalCenter: parent.horizontalCenter
+				spacing: 10
+				Label {
+					id: baseUpdateStatusText
+					font.bold: true
+					font.pixelSize: 20
+					text: 'ZClient main files was updated'
+				}
+				Button {
+					height: baseUpdateStatusText.height + 5
+					text: 'Restart'
+					onClicked: ZQt.restartClient()
+				}
+			}
+		}
 	}
 	Connections {
 		target: ZQt
@@ -205,13 +237,13 @@ ApplicationWindow {
 				updateStatusText.text = qsTr('Updating') + ' ZData ' + name
 			else
 				updateStatusText.text = qsTr('Updating') + ' ' + name
-			updateProgress.to = size;
-			updateProgress.value = 0;
+			updateProgress.to = size
+			updateProgress.value = 0
 			updateStatus.visible = true
 		}
 		function onSignalUpdaterPart(size)
 		{
-			updateProgress.value += size;
+			updateProgress.value += size
 		}
 //		function onSignalUpdaterFailed(name, zdata, t)
 		function onSignalUpdaterFinished()
@@ -231,6 +263,22 @@ ApplicationWindow {
 		{
 			connectStatusText.text = qsTr('Disconnected, reconnecting in 10 seconds')
 			connectStatus.visible = true
+		}
+		function onSignalHaveBaseUpdate()
+		{
+			baseUpdateStatus.visible = true
+		}
+		function onSignalIcon(rmb)
+		{
+			if (rmb)
+				Qt.quit()
+			else if (visible)
+				hide()
+			else
+			{
+				show()
+				requestActivate()
+			}
 		}
 	}
 	FontLoader {
@@ -291,7 +339,7 @@ ApplicationWindow {
 				Layout.alignment: Qt.AlignHCenter
 			}
 			Button {
-				text: 'Close'
+				text: qsTr('Close')
 				Layout.alignment: Qt.AlignHCenter
 				onClicked: popupError.close()
 			}

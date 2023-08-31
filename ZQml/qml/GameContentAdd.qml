@@ -27,15 +27,15 @@ ColumnLayout {
 			textTotalFiles.visible = infoTotal > 1
 			textTotalDownloadSize.visible = infoTotal > 1
 			textTotalHddSize.visible = infoTotal > 1
-			textTotalFiles.text = 'Total files: ' + totalFiles
-			textTotalDownloadSize.text = 'Total download size: ' + ZQt.formattedDataSize(totalDownloadSize)
-			textTotalHddSize.text = 'Total hdd size: ' + ZQt.formattedDataSize(totalHddSize)
+			textTotalFiles.text = qsTr('Total files') + ': ' + totalFiles
+			textTotalDownloadSize.text = qsTr('Total download size') + ': ' + totalDownloadSize
+			textTotalHddSize.text = qsTr('Total hdd size') + ': ' + totalHddSize
 		}
 		function onSignalGCInfoRecalc(totalFiles, totalDownloadSize, totalHddSize)
 		{
-			textTotalFiles.text = 'Total files: ' + totalFiles
-			textTotalDownloadSize.text = 'Total download size: ' + ZQt.formattedDataSize(totalDownloadSize)
-			textTotalHddSize.text = 'Total hdd size: ' + ZQt.formattedDataSize(totalHddSize)
+			textTotalFiles.text = qsTr('Total files') + ': ' + totalFiles
+			textTotalDownloadSize.text = qsTr('Total download size') + ': ' + totalDownloadSize
+			textTotalHddSize.text = qsTr('Total hdd size') + ': ' + totalHddSize
 		}
 	}
 	ListView {
@@ -74,21 +74,23 @@ ColumnLayout {
 					Row {
 						spacing: 20
 						Label {
-							text: 'Files: ' + display.files
+							text: qsTr('Files') + ': ' + display.files
 						}
 						Label {
-							text: 'Download size: ' + ZQt.formattedDataSize(display.downloadSize)
+							text: qsTr('Download size') + ': ' + display.downloadSize
 						}
 						Label {
-							text: 'Hdd size: ' + ZQt.formattedDataSize(display.hddSize)
+							text: qsTr('Hdd size') + ': ' + display.hddSize
 						}
 					}
 				}
 				CheckBox {
 					Layout.alignment: Qt.AlignRight
-					checked: true
-					text: 'Download'
+					checked: decoration.checked
+					text: qsTr('Download')
 					onCheckedChanged: {
+						if (decoration.checked === checked)
+							return
 						decoration.checked = checked
 						ZDownloadInfo.recalc(decoration.id, checked)
 					}

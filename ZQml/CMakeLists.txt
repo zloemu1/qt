@@ -2,10 +2,11 @@ project(ZQml CXX)
 
 file(GLOB QML_FILES qml/*.qml)
 set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM TRUE)
-qt5_create_translation(TRANSLATIONS ${QML_FILES} lang_en.ts lang_ru.ts)
+file(GLOB TRANSLATION_FILES langs/*.ts)
+qt5_create_translation(TRANSLATIONS ${QML_FILES} ${TRANSLATION_FILES})
 
 set(TRANSLATIONS_QRC "${CMAKE_CURRENT_BINARY_DIR}/ts.qrc")
-file(WRITE ${TRANSLATIONS_QRC} "<RCC>\n\t<qresource prefix=\"/\">")
+file(WRITE ${TRANSLATIONS_QRC} "<RCC>\n\t<qresource prefix=\"/langs\">")
 foreach(QM_FILE ${TRANSLATIONS})
 	get_filename_component(QM_FILE_NAME ${QM_FILE} NAME)
 	file(APPEND ${TRANSLATIONS_QRC} "\n\t\t<file>${QM_FILE_NAME}</file>")

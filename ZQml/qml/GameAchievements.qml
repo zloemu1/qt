@@ -7,18 +7,58 @@ import ZGui 1.0
 Page {
 	ColumnLayout {
 		anchors.fill: parent
-		Button {
-			property bool byName: true
+		Row {
 			Layout.alignment: Qt.AlignHCenter
-			text: byName ? qsTr('Sort by date') : qsTr('Sort by name')
-			onClicked: {
-				byName = !byName
-				ZAchievements.resort(byName)
+			spacing: 3
+			Button {
+				property bool param: true
+				text: param ? qsTr('Sort by date') : qsTr('Sort by name')
+				onClicked: {
+					param = !param
+					ZAchievements.resort(param)
+				}
+				visible: ZAchievements.achieved > 0
+			}
+			Button {
+				property int param: 0
+				text: qsTr('All')
+				onClicked: {
+					if (++param > 2)
+						param = 0
+					switch(param)
+					{
+						case 0:
+							text = qsTr('All')
+							break;
+						case 1:
+							text = qsTr('Achieved')
+							break;
+						case 2:
+							text = qsTr('Closed')
+							break;
+					}
+					ZAchievements.filter(param)
+				}
+				visible: ZAchievements.achieved > 0 && ZAchievements.achieved != ZAchievements.total
 			}
 		}
-		Label {
-			text: ZAchievements.achieved + ' / ' + ZAchievements.total
+		Row {
 			Layout.alignment: Qt.AlignHCenter
+			Label {
+				text: qsTr('Hidden') + ' ' + ZAchievements.hidden + ' / '
+				visible: ZAchievements.hidden > 0
+				MouseArea {
+					anchors.fill: parent
+					acceptedButtons: Qt.MiddleButton
+					onDoubleClicked: ZAchievements.showHidden()
+				}
+			}
+			Label {
+				text: qsTr('Achieved') + ' ' + ZAchievements.achieved + ' / '
+			}
+			Label {
+				text: qsTr('Total') + ' ' + ZAchievements.total
+			}
 		}
 		ListView {
 			id: list

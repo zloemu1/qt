@@ -40,7 +40,8 @@ StackLayout {
 		}
 		else
 			bnetCombo.currentIndex = -1
-		langCombo.currentIndex = ZQt.getLangSelectModel().fill(zid)
+		langCombo.currentIndex = ZQt.getModelLangGame().fillGame(zid)
+		langCombo.recalculateWidth()
 		if (bnetCombo.count < 2 && langCombo.count < 2)
 		{
 			var res = ZGames.loadInfo(zid, 0)
@@ -56,7 +57,6 @@ StackLayout {
 	Popup {
 		id: popupLang
 		anchors.centerIn: Overlay.overlay
-		closePolicy: Popup.NoAutoClose
 		dim: true
 		modal: true
 		ColumnLayout {
@@ -76,14 +76,14 @@ StackLayout {
 				visible: count > 0
 			}
 			Label {
-				text: 'Language'
+				text: qsTr('Language')
 				font.bold: true
 				Layout.alignment: Qt.AlignHCenter
 				visible: langCombo.count > 1
 			}
-			ComboBox {
+			AutoResizingComboBox {
 				id: langCombo
-				model: ZQt.getLangSelectModel()
+				model: ZQt.getModelLangGame()
 				Layout.alignment: Qt.AlignHCenter
 				textRole: 'display'
 				valueRole: 'edit'
@@ -93,15 +93,15 @@ StackLayout {
 				spacing: 5
 				Layout.alignment: Qt.AlignHCenter
 				Button {
-					text: "Cancel"
+					text: qsTr('Cancel')
 					onClicked: popupLang.close()
 				}
 				Button {
-					text: "Next"
+					text: qsTr('Next')
 					focus: true
 					onClicked: {
 						popupLang.close()
-						var res = ZGames.loadInfo(libraryView.zid, langCombo.currentValue, (bnetCombo.count > 0) ? bnetCombo.currentValue : "");
+						var res = ZGames.loadInfo(libraryView.zid, langCombo.currentValue, (bnetCombo.count > 0) ? bnetCombo.currentValue : '');
 						if (res === 0)
 							popupBusy.show()
 						else

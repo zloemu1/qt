@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
+        <file>hidden-64.png</file>
+        <file>no-icon-64.png</file>
         <file>bf3/maps/mp_001.jpg</file>
         <file>bf3/maps/mp_003.jpg</file>
         <file>bf3/maps/mp_007.jpg</file>

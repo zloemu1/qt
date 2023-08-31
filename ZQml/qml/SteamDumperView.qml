@@ -159,6 +159,7 @@ Page {
 						anchors.left: parent.left
 						anchors.right: parent.right
 						font.pointSize: 13
+						clip: true
 						color: Material.color(Material.Grey)
 						selectByMouse: true
 					}
@@ -178,6 +179,7 @@ Page {
 						anchors.left: parent.left
 						anchors.right: parent.right
 						font.pointSize: 13
+						clip: true
 						color: Material.color(Material.Grey)
 						echoMode: TextInput.PasswordEchoOnEdit
 						selectByMouse: true
@@ -201,6 +203,7 @@ Page {
 					anchors.left: parent.left
 					anchors.right: parent.right
 					font.pointSize: 13
+					clip: true
 					color: Material.color(Material.Grey)
 					selectByMouse: true
 				}

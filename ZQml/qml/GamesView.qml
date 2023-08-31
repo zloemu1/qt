@@ -9,6 +9,7 @@ import ZGui 1.0
 Page {
 	id: rootGamesView
 	property var compInfo: Qt.createComponent("GameInfo.qml")
+	property var compDescr: Qt.createComponent("GameDescr.qml")
 	property var compDLC: Qt.createComponent("GameContent.qml")
 	property var compNews: Qt.createComponent("GameNews.qml")
 	property var compAchievements: Qt.createComponent("GameAchievements.qml")
@@ -20,6 +21,7 @@ Page {
 	})
 	Component.onCompleted: {
 		if (compInfo.status === Component.Error) console.log('Create compInfo error ' + compInfo.errorString())
+		if (compDescr.status === Component.Error) console.log('Create compDescr error ' + compDescr.errorString())
 		if (compDLC.status === Component.Error) console.log('Create compDLC error ' + compDLC.errorString())
 		if (compNews.status === Component.Error) console.log('Create compNews error ' + compNews.errorString())
 		if (compAchievements.status === Component.Error) console.log('Create compAchievements error ' + compAchievements.errorString())
@@ -28,7 +30,7 @@ Page {
 				console.log('Create ' + view +' error ' + zviews[view].comp.errorString())
 	}
 	property var gv: null
-	property GameData zgame
+	property QtGame zgame
 	function pageChange(vis) {
 		if (gv !== null && gv.pageChange !== null)
 			gv.pageChange(vis)
@@ -47,6 +49,7 @@ Page {
 					anchors.left: parent.left
 					anchors.right: parent.right
 					font.pointSize: 13
+					clip: true
 					color: Material.foreground
 					onTextEdited: ZGames.filterName(text)
 					selectByMouse: true
@@ -78,9 +81,13 @@ Page {
 						anchors.rightMargin: installedGamesList.contentHeight > installedGamesList.height ? 10 : 0
 						clip: true
 						text: display.name
+//						ToolTip.text: display.name
+//						ToolTip.visible: ma.containsMouse && contentWidth > width
 						MouseArea {
+//							id: ma
 							anchors.fill: parent
 							onClicked: installedGamesList.currentIndex = index
+//							hoverEnabled: true
 						}
 					}
 					highlight: Rectangle {

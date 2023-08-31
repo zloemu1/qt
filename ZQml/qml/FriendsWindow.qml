@@ -7,6 +7,7 @@ import ZGui 1.0
 
 ApplicationWindow {
 	property alias statusOwnText: statusText.text
+	property string avatarHost: ZFriends.getAvatarHost()
 	id: rootFriends
 	width: 300
 	height: 500
@@ -22,6 +23,7 @@ ApplicationWindow {
 	Connections {
 		target: ZFriendSearch
 		function onSignalShowResult() {
+			avatarHost = ZFriends.getAvatarHost()
 			stackLayout.currentIndex = 3
 		}
 	}
@@ -38,7 +40,7 @@ ApplicationWindow {
 		}
 		MenuItem {
 			text: qsTr('Send message')
-			onClicked: ZChats.open(friendMenu.user.id, true)
+			onTriggered: ZChats.open(friendMenu.user.id, true)
 		}
 		MenuItem {
 			text: qsTr('View profile')
@@ -64,7 +66,7 @@ enabled: false
 		MenuSeparator {}
 		MenuItem {
 			text: qsTr('Remove')
-			onClicked: ZFriends.del(friendMenu.user.id)
+			onTriggered: ZFriends.del(friendMenu.user.id)
 		}
 	}
 	Menu {
@@ -83,22 +85,22 @@ enabled: false
 		property int tstatus
 		MenuItem {
 			text: qsTr('Online')
-			onClicked: ZUser.status = 1;
+			onTriggered: ZUser.status = 1;
 			enabled: statusMenu.tstatus !== 1
 		}
 		MenuItem {
 			text: qsTr('Away')
-			onClicked: ZUser.status = 2;
+			onTriggered: ZUser.status = 2;
 			enabled: statusMenu.tstatus !== 2
 		}
 		MenuItem {
 			text: qsTr('DND')
-			onClicked: ZUser.status = 3;
+			onTriggered: ZUser.status = 3;
 			enabled: statusMenu.tstatus !== 3
 		}
 		MenuItem {
 			text: qsTr('Invisible')
-			onClicked: ZUser.status = 0;
+			onTriggered: ZUser.status = 0;
 			enabled: statusMenu.tstatus !== 0
 		}
 	}
@@ -114,9 +116,14 @@ enabled: false
 			anchors.top: parent.top
 			anchors.topMargin: 5
 			anchors.leftMargin: 5
-			source: "image://ZAvatar/" + ZUser.id
+			cache: false
+			source: 'file:///' + ZFriends.getAvatar(0)
 			width: 32
 			height: 32
+			Connections {
+				target: ZFriends
+				function onSignalAvatarUpdated(path) { avatar.source = ''; avatar.source = 'file:///' + path }
+			}
 		}
 		Column {
 			anchors.left: avatar.right
@@ -455,7 +462,7 @@ enabled: false
 						anchors.left: parent.left
 						anchors.right: parent.right
 						Image {
-							source: 'http://avatars.zloemu.net/' + display.id + '.png'
+							source: avatarHost + display.id + '.png'
 							width: 32
 							height: 32
 						}

@@ -127,9 +127,14 @@ ApplicationWindow {
 							statusText.text = rootWindow.onlineStatusStr(display.status, false)
 					}
 					Image {
-						source: "image://ZAvatar/" + display.id
+						id: avatar
+						source: 'file:///' + ZFriends.getAvatar(display.id)
 						Layout.preferredWidth: 32
 						Layout.preferredHeight: 32
+						Connections {
+							target: display
+							function onSignalAvatar(path) { avatar.source = ''; avatar.source = 'file:///' + path }
+						}
 					}
 					Column {
 						Layout.alignment: Qt.AlignVCenter

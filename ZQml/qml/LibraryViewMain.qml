@@ -44,6 +44,7 @@ Page {
 				anchors.left: parent.left
 				anchors.right: parent.right
 				font.pointSize: 13
+				clip: true
 				color: Material.foreground
 				onTextEdited: ZLibrary.filterName(text)
 				selectByMouse: true
@@ -62,6 +63,7 @@ Page {
 		anchors.bottom: parent.bottom
 		anchors.left: parent.left
 		anchors.right: parent.right
+		clip: true
 		model: ZLibrary
 		boundsBehavior: Flickable.StopAtBounds
 		ScrollBar.vertical: ScrollBar {
@@ -84,29 +86,29 @@ Page {
 		cellHeight: itemHeight + verticalSpacing
 
 		delegate: MouseArea {
-				id: ma
-				height: grid.itemHeight
-				width: grid.itemWidth
-				acceptedButtons: Qt.LeftButton | Qt.RightButton
-				onClicked: if (decoration.owned) gameMenu.show(decoration.id, decoration.sys)
-				hoverEnabled: true
-				Image {
-					id: cover
-					anchors.fill: parent
-					asynchronous: true
-					source: display.cover
-					fillMode: Image.PreserveAspectFit
-					opacity: ma.containsMouse ? 0.2 : 1
-				}
-				Label {
-					anchors.fill: parent
-					text: display.name
-					font.bold: true
-					wrapMode: Text.WordWrap
-					visible: ma.containsMouse
-					horizontalAlignment: Text.AlignHCenter
-					verticalAlignment: Text.AlignVCenter
-				}
+			id: ma
+			height: grid.itemHeight
+			width: grid.itemWidth
+			acceptedButtons: Qt.LeftButton | Qt.RightButton
+			onClicked: if (decoration.owned) gameMenu.show(decoration.id, decoration.sys)
+			hoverEnabled: true
+			Image {
+				id: cover
+				anchors.fill: parent
+				asynchronous: true
+				source: display.cover
+				fillMode: Image.PreserveAspectFit
+				opacity: ma.containsMouse ? 0.2 : 1
+			}
+			Label {
+				anchors.fill: parent
+				text: display.name
+				font.bold: true
+				wrapMode: Text.WordWrap
+				visible: ma.containsMouse
+				horizontalAlignment: Text.AlignHCenter
+				verticalAlignment: Text.AlignVCenter
+			}
 		}
 	}
 	Platform.FolderDialog {
@@ -121,8 +123,11 @@ Page {
 		}
 		onAccepted: {
 			libraryView.folder = folder
+			if (libraryView.folder.indexOf('file:///') === -1)
+				return;
 			libraryView.folder = libraryView.folder.replace('file:///', '')
-			libraryView.show(gid, true, sys)
+			if (ZQt.isValidPath(libraryView.folder))
+				libraryView.show(gid, true, sys)
 		}
 	}
 }

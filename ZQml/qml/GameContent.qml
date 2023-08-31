@@ -53,14 +53,21 @@ StackLayout {
 				height: childrenRect.height
 				color: '#3B3B3B'
 				visible: display.visible
-				function setDatas()
+				function updatePublic()
+				{
+					paidLabel.visible = display.paid > 0 && !display.owned
+					paidLabel.text = 'Paid: ' + display.paid
+					buyButton.visible = display.paid && !display.owned
+				}
+				function updateDownloader()
 				{
 					sysLabel.visible = display.sys > 0
 					sysLabel.text = 'Sys: ' + gameSysStr(display.sys)
 					stateText.visible = display.sys > 0
+				}
+				function updateState()
+				{
 					stateText.text = 'State: ' + gameStateStr(display.state)
-					paidLabel.visible = display.paid > 0 && !display.owned
-					paidLabel.text = 'Paid: ' + display.paid
 					if (display.state === 0 || display.state === 2 || display.state === 10)
 					{
 						dlcButton.visible = display.sys > 0 && display.owned
@@ -73,13 +80,19 @@ StackLayout {
 					}
 					else
 						dlcButton.visible = false
-					buyButton.visible = display.paid && !display.owned
 				}
 				Connections {
 					target: display
-					function onSignalUpdate() { setDatas() }
+					function onSignalUpdatePublic() { updatePublic() }
+					function onSignalUpdateDownloader() { updateDownloader() }
+					function onSignalUpdateState() { updateState() }
 				}
-				Component.onCompleted: setDatas()
+				Component.onCompleted:
+				{
+					updatePublic()
+					updateDownloader()
+					updateState()
+				}
 				RowLayout {
 					anchors.left: parent.left
 					anchors.right: parent.right

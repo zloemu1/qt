@@ -13,7 +13,7 @@ Column {
 			text: 'EA Mail'
 		}
 		Rectangle {
-			width: 200
+			width: 300
 			height: childrenRect.height
 			color: "#3B3B3B"
 			TextInput {
@@ -33,7 +33,7 @@ Column {
 			text: 'EA Password'
 		}
 		Rectangle {
-			width: 200
+			width: 300
 			height: childrenRect.height
 			color: "#3B3B3B"
 			TextInput {
@@ -41,6 +41,7 @@ Column {
 				anchors.left: parent.left
 				anchors.right: parent.right
 				font.pointSize: 13
+				clip: true
 				color: Material.color(Material.Grey)
 				echoMode: TextInput.PasswordEchoOnEdit
 				selectByMouse: true

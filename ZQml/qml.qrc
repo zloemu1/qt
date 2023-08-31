@@ -16,6 +16,7 @@
         <file>qml/GameBFHL.qml</file>
         <file>qml/GameContent.qml</file>
         <file>qml/GameContentAdd.qml</file>
+        <file>qml/GameDescr.qml</file>
         <file>qml/GameInfo.qml</file>
         <file>qml/GameNews.qml</file>
         <file>qml/GameSims4.qml</file>

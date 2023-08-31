@@ -22,6 +22,18 @@ Page {
 			comps.push(tcomp)
 		}
 //
+		if (zgame.longDescr.length > 0)
+		{
+			tcomp = rootGamesView.compDescr.createObject(viewGame)
+			if (tcomp.status === Component.Error)
+				console.log('Create descr view error ' + tcomp.errorString())
+			else
+			{
+				comps.push(gameViewMenuButton.createObject(topbarGame, {text: qsTr('Description')}))
+				comps.push(tcomp)
+			}
+		}
+//
 		ZGames.select(zgame.id)
 		if (ZGames.getDLCModel().load(zgame.id))
 		{
