@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
+import QtQuick.Layouts 1.15
 import Qt.labs.platform 1.1 as Platform
 import ZGui 1.0
 
@@ -16,12 +17,18 @@ Page {
 		overlayHotkeyCombo.currentIndex = overlayHotkeyCombo.indexOfValue(ZQt.getOverlayHotkey())
 		overlayHotkeyCombo.recalculateWidth()
 	}
-	Column {
-		Row {
-			spacing: 5
+	ColumnLayout {
+		anchors.left: parent.left
+		anchors.right: parent.right
+		anchors.margins: 5
+		spacing: 3
+		RowLayout {
+			Layout.fillWidth: true
 			Label {
-				anchors.verticalCenter: parent.verticalCenter
 				text: qsTr('ZClient language')
+			}
+			Item {
+				Layout.fillWidth: true
 			}
 			AutoResizingComboBox {
 				id: langUICombo
@@ -41,11 +48,19 @@ Page {
 				onClicked: ZQt.restartClient()
 			}
 		}
-		Row {
-			spacing: 5
+		Rectangle {
+			Layout.fillWidth: true
+			color: Material.accent
+			height: 3
+			radius: 1
+		}
+		RowLayout {
+			Layout.fillWidth: true
 			Label {
-				anchors.verticalCenter: parent.verticalCenter
 				text: qsTr('Default installer language')
+			}
+			Item {
+				Layout.fillWidth: true
 			}
 			AutoResizingComboBox {
 				id: langInstallerCombo
@@ -55,56 +70,78 @@ Page {
 				onActivated: ZQt.setLangInstaller(parseInt(currentValue))
 			}
 		}
-		Label {
-			text: qsTr('Install locations')
-		}
 		Rectangle {
-			width: childrenRect.width
-			height: childrenRect.height
-			color: "#3B3B3B"
-			ListView {
-				id: installLocations
-				width: 600
-				height: 300
-				model: ZQt.getInstallLocationsModel()
-				clip: true
-				currentIndex: -1
-				boundsBehavior: Flickable.StopAtBounds
-				highlightMoveVelocity: -1
-				delegate: Label {
-					property string folder: model.display
-					anchors.left: parent ? parent.left : undefined
-					anchors.right: parent ? parent.right : undefined
-					text: model.display + ' ' + ZQt.formattedDataSize(model.edit)
-					MouseArea {
+			Layout.fillWidth: true
+			color: Material.accent
+			height: 3
+			radius: 1
+		}
+		RowLayout {
+			Layout.fillWidth: true
+			Label {
+				text: qsTr('Install locations')
+			}
+			Item {
+				Layout.fillWidth: true
+			}
+			ColumnLayout {
+				Rectangle {
+					width: 600
+					height: 300
+					color: "#3B3B3B"
+					ListView {
 						anchors.fill: parent
-						onClicked: installLocations.currentIndex = index
+						id: installLocations
+						model: ZQt.getInstallLocationsModel()
+						clip: true
+						currentIndex: -1
+						boundsBehavior: Flickable.StopAtBounds
+						highlightMoveVelocity: -1
+						delegate: Label {
+							property string folder: model.display
+							anchors.left: parent ? parent.left : undefined
+							anchors.right: parent ? parent.right : undefined
+							text: model.display + ' ' + ZQt.formattedDataSize(model.edit)
+							MouseArea {
+								anchors.fill: parent
+								onClicked: installLocations.currentIndex = index
+							}
+						}
+						highlight: Rectangle {
+							anchors.left: parent ? parent.left : undefined
+							anchors.right: parent ? parent.right : undefined
+							color: "#232323"
+						}
 					}
 				}
-				highlight: Rectangle {
-					anchors.left: parent ? parent.left : undefined
-					anchors.right: parent ? parent.right : undefined
-					color: "#232323"
+				RowLayout {
+					Layout.alignment: Qt.AlignHCenter
+					Layout.fillWidth: true
+					Button {
+						text: qsTr('Add')
+						onClicked: folderDialog.open()
+					}
+					Button {
+						text: qsTr('Del')
+						enabled: installLocations.currentItem !== null
+						onClicked: ZQt.getInstallLocationsModel().del(installLocations.currentItem.folder)
+					}
 				}
 			}
 		}
-		Row {
-			spacing: 5
-			Button {
-				text: qsTr('Add')
-				onClicked: folderDialog.open()
-			}
-			Button {
-				text: qsTr('Del')
-				enabled: installLocations.currentItem !== null
-				onClicked: ZQt.getInstallLocationsModel().del(installLocations.currentItem.folder)
-			}
+		Rectangle {
+			Layout.fillWidth: true
+			color: Material.accent
+			height: 3
+			radius: 1
 		}
-		Row {
-			spacing: 5
+		RowLayout {
+			Layout.fillWidth: true
 			Label {
-				anchors.verticalCenter: parent.verticalCenter
 				text: qsTr('Overlay hotkey')
+			}
+			Item {
+				Layout.fillWidth: true
 			}
 			AutoResizingComboBox {
 				id: overlayHotkeyCombo

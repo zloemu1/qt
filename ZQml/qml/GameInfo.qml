@@ -9,15 +9,12 @@ Page {
 	Column {
 		anchors.fill: parent
 		Row {
+			spacing: 5
 			Image {
 				source: zgame.cover
 				width: 250
 				height: 350
 				visible: zgame.cover.length > 0
-			}
-			Item {
-				width: 5
-				height: 1
 			}
 			Column {
 				Label {

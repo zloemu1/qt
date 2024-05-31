@@ -24,5 +24,4 @@ StackLayout {
 	CommunityView {}
 	SettingsView {}
 	LogView {}
-	SteamDumperView {}
 }

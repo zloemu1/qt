@@ -112,6 +112,7 @@ Page {
 	header: TabBar {
 		id: topbarGame
 		currentIndex: viewGame.currentIndex
+		clip: true
 	}
 	SwipeView {
 		id: viewGame

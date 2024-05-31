@@ -40,7 +40,7 @@ ApplicationWindow {
 		}
 		MenuItem {
 			text: qsTr('Send message')
-			onTriggered: ZChats.open(friendMenu.user.id, true)
+			onTriggered: ZChats.open(friendMenu.user.id)
 		}
 		MenuItem {
 			text: qsTr('View profile')
@@ -72,11 +72,14 @@ enabled: false
 	Menu {
 		property int user
 		id: friendSearchMenu
+/*
 		MenuItem {
 			text: qsTr('View profile')
 		}
+*/
 		MenuItem {
 			text: qsTr('Add to friends')
+			onTriggered: ZFriends.add(friendSearchMenu.user)
 		}
 	}
 	Menu {
@@ -217,6 +220,74 @@ enabled: false
 						anchors.leftMargin: 5
 						anchors.left: parent.left
 						anchors.right: parent.right
+						visible: friendsIncoming.count > 0
+						text: qsTr('Incoming requests') + ' (' + friendsIncoming.count + ')'
+						color: '#ACACAC'
+						font.pixelSize: 15
+						MouseArea {
+							anchors.fill: parent
+							onClicked: friendsIncoming.visible = !friendsIncoming.visible
+						}
+					}
+					ListView {
+						anchors.leftMargin: 10
+						anchors.rightMargin: 10
+						anchors.left: parent.left
+						anchors.right: parent.right
+						interactive: false
+						spacing: 5
+						height: childrenRect.height
+						id: friendsIncoming
+						model: ZFriends.incoming
+						delegate: FriendItem {}
+					}
+					ToolSeparator {
+						anchors.leftMargin: 5
+						anchors.rightMargin: 5
+						anchors.left: parent.left
+						anchors.right: parent.right
+						orientation:  Qt.Horizontal
+						visible: friendsIncoming.count > 0 && (friendsOutgoing.count > 0 || friendsGame.count > 0 || friendsOnline.count > 0 || friendsOffline.count > 0)
+					}
+//
+					Text {
+						anchors.leftMargin: 5
+						anchors.left: parent.left
+						anchors.right: parent.right
+						visible: friendsOutgoing.count > 0
+						text: qsTr('Outgoing requests') + ' (' + friendsOutgoing.count + ')'
+						color: '#ACACAC'
+						font.pixelSize: 15
+						MouseArea {
+							anchors.fill: parent
+							onClicked: friendsOutgoing.visible = !friendsOutgoing.visible
+						}
+					}
+					ListView {
+						anchors.leftMargin: 10
+						anchors.rightMargin: 10
+						anchors.left: parent.left
+						anchors.right: parent.right
+						interactive: false
+						spacing: 5
+						height: childrenRect.height
+						id: friendsOutgoing
+						model: ZFriends.outgoing
+						delegate: FriendItem {}
+					}
+					ToolSeparator {
+						anchors.leftMargin: 5
+						anchors.rightMargin: 5
+						anchors.left: parent.left
+						anchors.right: parent.right
+						orientation:  Qt.Horizontal
+						visible: friendsOutgoing.count > 0 && (friendsGame.count > 0 || friendsOnline.count > 0 || friendsOffline.count > 0)
+					}
+//
+					Text {
+						anchors.leftMargin: 5
+						anchors.left: parent.left
+						anchors.right: parent.right
 						visible: friendsGame.count > 0
 						text: qsTr('In game') + ' (' + friendsGame.count + ')'
 						color: '#ACACAC'
@@ -238,15 +309,15 @@ enabled: false
 						model: ZFriends.inGame
 						delegate: FriendItem {}
 					}
-//
 					ToolSeparator {
 						anchors.leftMargin: 5
 						anchors.rightMargin: 5
 						anchors.left: parent.left
 						anchors.right: parent.right
 						orientation:  Qt.Horizontal
-						visible: friendsOnline.count > 0 && friendsGame.count > 0
+						visible: friendsGame.count > 0 && (friendsOnline.count > 0 || friendsOffline.count > 0)
 					}
+//
 					Text {
 						anchors.leftMargin: 5
 						anchors.left: parent.left
@@ -272,15 +343,15 @@ enabled: false
 						model: ZFriends.online
 						delegate: FriendItem {}
 					}
-//
 					ToolSeparator {
 						anchors.leftMargin: 5
 						anchors.rightMargin: 5
 						anchors.left: parent.left
 						anchors.right: parent.right
 						orientation:  Qt.Horizontal
-						visible: friendsOffline.count > 0 && (friendsOnline.count > 0 || friendsGame.count > 0)
+						visible: friendsOnline.count > 0 && friendsOffline.count > 0
 					}
+//
 					Text {
 						anchors.leftMargin: 5
 						anchors.left: parent.left
@@ -307,73 +378,6 @@ enabled: false
 						delegate: FriendItem {}
 					}
 //
-					ToolSeparator {
-						anchors.leftMargin: 5
-						anchors.rightMargin: 5
-						anchors.left: parent.left
-						anchors.right: parent.right
-						orientation:  Qt.Horizontal
-						visible: friendsIncoming.count > 0 && (friendsOffline.count > 0 || friendsOnline.count > 0 || friendsGame.count > 0)
-					}
-					Text {
-						anchors.leftMargin: 5
-						anchors.left: parent.left
-						anchors.right: parent.right
-						visible: friendsIncoming.count > 0
-						text: qsTr('Incoming requests') + ' (' + friendsIncoming.count + ')'
-						color: '#ACACAC'
-						font.pixelSize: 15
-						MouseArea {
-							anchors.fill: parent
-							onClicked: friendsIncoming.visible = !friendsIncoming.visible
-						}
-					}
-					ListView {
-						anchors.leftMargin: 10
-						anchors.rightMargin: 10
-						anchors.left: parent.left
-						anchors.right: parent.right
-						interactive: false
-						spacing: 5
-						height: childrenRect.height
-						id: friendsIncoming
-						model: ZFriends.incoming
-						delegate: FriendItem {}
-					}
-//
-					ToolSeparator {
-						anchors.leftMargin: 5
-						anchors.rightMargin: 5
-						anchors.left: parent.left
-						anchors.right: parent.right
-						orientation:  Qt.Horizontal
-						visible: friendsOutgoing.count > 0 && (friendsIncoming.count > 0 || friendsOffline.count > 0 || friendsOnline.count > 0 || friendsGame.count > 0)
-					}
-					Text {
-						anchors.leftMargin: 5
-						anchors.left: parent.left
-						anchors.right: parent.right
-						visible: friendsOutgoing.count > 0
-						text: qsTr('Outgoing requests') + ' (' + friendsOutgoing.count + ')'
-						color: '#ACACAC'
-						font.pixelSize: 15
-						MouseArea {
-							anchors.fill: parent
-							onClicked: friendsOutgoing.visible = !friendsOutgoing.visible
-						}
-					}
-					ListView {
-						anchors.leftMargin: 10
-						anchors.rightMargin: 10
-						anchors.left: parent.left
-						anchors.right: parent.right
-						interactive: false
-						spacing: 5
-						height: childrenRect.height
-						id: friendsOutgoing
-						model: ZFriends.outgoing
-						delegate: FriendItem {}
-					}
 					Item {
 						width: 1
 						height: 5
@@ -405,6 +409,7 @@ enabled: false
 						color: Material.foreground
 						selectByMouse: true
 						focus: true
+						onAccepted: if (ZFriendSearch.search(friendsSearch.text)) stackLayout.currentIndex = 2
 					}
 				}
 				Row {

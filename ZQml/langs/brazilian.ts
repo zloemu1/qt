@@ -185,15 +185,23 @@
         <source>Join</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GameBF3Server</name>
     <message>
         <source>Back</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Join</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -288,6 +296,10 @@
         <source>vvsd</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Join</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>GameBF4</name>
@@ -297,6 +309,18 @@
     </message>
     <message>
         <source>Spectator</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -737,6 +761,10 @@
         <source>Tank Superiority</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Server list</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>InviteWindow</name>
@@ -825,14 +853,6 @@
 <context>
     <name>SettingsView</name>
     <message>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Del</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>ZClient language</source>
         <translation type="unfinished"></translation>
     </message>
@@ -850,6 +870,14 @@
     </message>
     <message>
         <source>Overlay hotkey</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Del</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -872,10 +900,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>News</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>My Games</source>
         <translation type="unfinished"></translation>
     </message>
@@ -891,9 +915,33 @@
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>News</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>main</name>
+    <message>
+        <source>Invisible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Offline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Online</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Away</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>DND</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
         <source>Not installed</source>
         <translation type="unfinished"></translation>
@@ -956,26 +1004,6 @@
     </message>
     <message>
         <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Invisible</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Offline</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Online</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Away</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>DND</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

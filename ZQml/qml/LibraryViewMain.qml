@@ -2,7 +2,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Controls.Material 2.15
 import QtQuick.Layouts 1.15
-import Qt.labs.platform 1.1 as Platform
 import ZGui 1.0
 
 Page {
@@ -48,11 +47,6 @@ Page {
 				color: Material.foreground
 				onTextEdited: ZLibrary.filterName(text)
 				selectByMouse: true
-				MouseArea {
-					anchors.fill: parent
-					acceptedButtons: Qt.RightButton
-					onDoubleClicked: if (parent.text === '32167') setPage('steamdumper')
-				}
 			}
 		}
 	}
@@ -90,7 +84,14 @@ Page {
 			height: grid.itemHeight
 			width: grid.itemWidth
 			acceptedButtons: Qt.LeftButton | Qt.RightButton
-			onClicked: if (decoration.owned) gameMenu.show(decoration.id, decoration.sys)
+			onClicked: {
+				if (!decoration.owned)
+					return
+				if (mouse.button == Qt.LeftButton)
+					showDetails(decoration)
+				else
+					gameMenu.show(decoration.id, decoration.sys)
+			}
 			hoverEnabled: true
 			Image {
 				id: cover
@@ -109,25 +110,6 @@ Page {
 				horizontalAlignment: Text.AlignHCenter
 				verticalAlignment: Text.AlignVCenter
 			}
-		}
-	}
-	Platform.FolderDialog {
-		id: folderDialog
-		property int gid
-		property int sys
-		function show(_gid, _sys)
-		{
-			gid = _gid
-			sys = _sys
-			open()
-		}
-		onAccepted: {
-			libraryView.folder = folder
-			if (libraryView.folder.indexOf('file:///') === -1)
-				return;
-			libraryView.folder = libraryView.folder.replace('file:///', '')
-			if (ZQt.isValidPath(libraryView.folder))
-				libraryView.show(gid, true, sys)
 		}
 	}
 }

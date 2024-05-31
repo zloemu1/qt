@@ -62,17 +62,17 @@
 <context>
     <name>FriendItem</name>
     <message>
-        <location filename="../qml/FriendItem.qml" line="87"/>
+        <location filename="../qml/FriendItem.qml" line="92"/>
         <source>Cancel</source>
         <translation>Отменить</translation>
     </message>
     <message>
-        <location filename="../qml/FriendItem.qml" line="106"/>
+        <location filename="../qml/FriendItem.qml" line="111"/>
         <source>Accept</source>
         <translation>Принять</translation>
     </message>
     <message>
-        <location filename="../qml/FriendItem.qml" line="127"/>
+        <location filename="../qml/FriendItem.qml" line="132"/>
         <source>Reject</source>
         <translation>Отказать</translation>
     </message>
@@ -112,13 +112,13 @@
     </message>
     <message>
         <location filename="../qml/FriendsWindow.qml" line="79"/>
-        <location filename="../qml/FriendsWindow.qml" line="492"/>
+        <location filename="../qml/FriendsWindow.qml" line="494"/>
         <source>Add to friends</source>
         <translation>Добавить в друзья</translation>
     </message>
     <message>
         <location filename="../qml/FriendsWindow.qml" line="87"/>
-        <location filename="../qml/FriendsWindow.qml" line="254"/>
+        <location filename="../qml/FriendsWindow.qml" line="255"/>
         <source>Online</source>
         <translation>В сети</translation>
     </message>
@@ -138,42 +138,42 @@
         <translation>Невидимый</translation>
     </message>
     <message>
-        <location filename="../qml/FriendsWindow.qml" line="220"/>
+        <location filename="../qml/FriendsWindow.qml" line="221"/>
         <source>In game</source>
         <translation>В игре</translation>
     </message>
     <message>
-        <location filename="../qml/FriendsWindow.qml" line="288"/>
+        <location filename="../qml/FriendsWindow.qml" line="289"/>
         <source>Offline</source>
         <translation>Не в сети</translation>
     </message>
     <message>
-        <location filename="../qml/FriendsWindow.qml" line="322"/>
+        <location filename="../qml/FriendsWindow.qml" line="323"/>
         <source>Incoming requests</source>
         <translation>Входящие запросы</translation>
     </message>
     <message>
-        <location filename="../qml/FriendsWindow.qml" line="356"/>
+        <location filename="../qml/FriendsWindow.qml" line="357"/>
         <source>Outgoing requests</source>
         <translation>Исходящие запросы</translation>
     </message>
     <message>
-        <location filename="../qml/FriendsWindow.qml" line="392"/>
+        <location filename="../qml/FriendsWindow.qml" line="393"/>
         <source>Player name to search</source>
         <translation>Имя для поиска</translation>
     </message>
     <message>
-        <location filename="../qml/FriendsWindow.qml" line="413"/>
+        <location filename="../qml/FriendsWindow.qml" line="415"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../qml/FriendsWindow.qml" line="417"/>
+        <location filename="../qml/FriendsWindow.qml" line="419"/>
         <source>Search</source>
         <translation>Найти</translation>
     </message>
     <message>
-        <location filename="../qml/FriendsWindow.qml" line="502"/>
+        <location filename="../qml/FriendsWindow.qml" line="504"/>
         <source>Back</source>
         <translation>Назад</translation>
     </message>
@@ -229,135 +229,154 @@
 <context>
     <name>GameBF3</name>
     <message>
-        <location filename="../qml/GameBF3.qml" line="111"/>
+        <location filename="../qml/GameBF3.qml" line="133"/>
         <source>Join</source>
         <translation>Присоединиться</translation>
+    </message>
+    <message>
+        <location filename="../qml/GameBF3.qml" line="179"/>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
+    </message>
+    <message>
+        <location filename="../qml/GameBF3.qml" line="183"/>
+        <source>Continue</source>
+        <translation>Продолжить</translation>
+    </message>
+    <message>
+        <location filename="../qml/GameBF3.qml" line="210"/>
+        <source>Close</source>
+        <translation>Закрыть</translation>
+    </message>
+    <message>
+        <source>Back</source>
+        <translation type="obsolete">Назад</translation>
     </message>
 </context>
 <context>
     <name>GameBF3Server</name>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="30"/>
+        <location filename="../qml/GameBF3Server.qml" line="49"/>
         <source>Back</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="45"/>
+        <location filename="../qml/GameBF3Server.qml" line="68"/>
         <source>Join</source>
         <translation>Присоединиться</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="91"/>
+        <location filename="../qml/GameBF3Server.qml" line="130"/>
         <source>osls</source>
         <translation>onlySquadLeaderSpawn</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="94"/>
+        <location filename="../qml/GameBF3Server.qml" line="133"/>
         <source>v3ca</source>
         <translation>3pCam</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="97"/>
+        <location filename="../qml/GameBF3Server.qml" line="136"/>
         <source>v3sp</source>
         <translation>3dSpotting</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="100"/>
+        <location filename="../qml/GameBF3Server.qml" line="139"/>
         <source>vaba</source>
         <translation>autoBalance</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="103"/>
+        <location filename="../qml/GameBF3Server.qml" line="142"/>
         <source>vffi</source>
         <translation>friendlyFire</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="106"/>
+        <location filename="../qml/GameBF3Server.qml" line="145"/>
         <source>vhud</source>
         <translation>hud</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="109"/>
+        <location filename="../qml/GameBF3Server.qml" line="148"/>
         <source>vkca</source>
         <translation>killCam</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="112"/>
+        <location filename="../qml/GameBF3Server.qml" line="151"/>
         <source>vmin</source>
         <translation>miniMap</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="123"/>
+        <location filename="../qml/GameBF3Server.qml" line="162"/>
         <source>vmsp</source>
         <translation>miniMapSpotting</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="126"/>
+        <location filename="../qml/GameBF3Server.qml" line="165"/>
         <source>vnta</source>
         <translation>nameTag</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="129"/>
+        <location filename="../qml/GameBF3Server.qml" line="168"/>
         <source>vrhe</source>
         <translation>regenerateHealth</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="132"/>
+        <location filename="../qml/GameBF3Server.qml" line="171"/>
         <source>vvsa</source>
         <translation>vehicleSpawnAllowed</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="135"/>
+        <location filename="../qml/GameBF3Server.qml" line="174"/>
         <source>gmwp</source>
         <translation>gunMasterWeaponsPreset</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="138"/>
+        <location filename="../qml/GameBF3Server.qml" line="177"/>
         <source>vnit</source>
         <translation>idleTimeout</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="141"/>
+        <location filename="../qml/GameBF3Server.qml" line="180"/>
         <source>vrtm</source>
         <translation>ctfRoundTimeModifier</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="144"/>
+        <location filename="../qml/GameBF3Server.qml" line="183"/>
         <source>vtkc</source>
         <translation>teamKillCountForKick</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="155"/>
+        <location filename="../qml/GameBF3Server.qml" line="194"/>
         <source>vtkk</source>
         <translation>teamKillKickForBan</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="158"/>
+        <location filename="../qml/GameBF3Server.qml" line="197"/>
         <source>vbdm</source>
         <translation>bulletDamage</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="161"/>
+        <location filename="../qml/GameBF3Server.qml" line="200"/>
         <source>vgmc</source>
         <translation>gameModeCounter</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="164"/>
+        <location filename="../qml/GameBF3Server.qml" line="203"/>
         <source>vpmd</source>
         <translation>playerManDownTime</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="167"/>
+        <location filename="../qml/GameBF3Server.qml" line="206"/>
         <source>vprt</source>
         <translation>playerRespawnTime</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="170"/>
+        <location filename="../qml/GameBF3Server.qml" line="209"/>
         <source>vshe</source>
         <translation>soldierHealth</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF3Server.qml" line="173"/>
+        <location filename="../qml/GameBF3Server.qml" line="212"/>
         <source>vvsd</source>
         <translation>vehicleSpawnDelay</translation>
     </message>
@@ -365,14 +384,29 @@
 <context>
     <name>GameBF4</name>
     <message>
-        <location filename="../qml/GameBF4.qml" line="111"/>
+        <location filename="../qml/GameBF4.qml" line="133"/>
         <source>Join</source>
         <translation>Присоединиться</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4.qml" line="125"/>
+        <location filename="../qml/GameBF4.qml" line="147"/>
         <source>Spectator</source>
         <translation>Наблюдатель</translation>
+    </message>
+    <message>
+        <location filename="../qml/GameBF4.qml" line="207"/>
+        <source>Cancel</source>
+        <translation>Отмена</translation>
+    </message>
+    <message>
+        <location filename="../qml/GameBF4.qml" line="211"/>
+        <source>Continue</source>
+        <translation>Продолжить</translation>
+    </message>
+    <message>
+        <location filename="../qml/GameBF4.qml" line="238"/>
+        <source>Close</source>
+        <translation>Закрыть</translation>
     </message>
 </context>
 <context>
@@ -393,197 +427,197 @@
         <translation>Наблюдатель</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="118"/>
+        <location filename="../qml/GameBF4Server.qml" line="124"/>
         <source>aaro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="121"/>
+        <location filename="../qml/GameBF4Server.qml" line="127"/>
         <source>aasl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="124"/>
+        <location filename="../qml/GameBF4Server.qml" line="130"/>
         <source>osls</source>
         <translation type="unfinished">onlySquadLeaderSpawn</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="127"/>
+        <location filename="../qml/GameBF4Server.qml" line="133"/>
         <source>v3ca</source>
         <translation type="unfinished">3pCam</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="130"/>
+        <location filename="../qml/GameBF4Server.qml" line="136"/>
         <source>v3sp</source>
         <translation type="unfinished">3dSpotting</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="133"/>
+        <location filename="../qml/GameBF4Server.qml" line="139"/>
         <source>vaba</source>
         <translation type="unfinished">autoBalance</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="136"/>
+        <location filename="../qml/GameBF4Server.qml" line="142"/>
         <source>vcmd</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="139"/>
+        <location filename="../qml/GameBF4Server.qml" line="145"/>
         <source>vffi</source>
         <translation type="unfinished">friendlyFire</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="142"/>
+        <location filename="../qml/GameBF4Server.qml" line="148"/>
         <source>vfrm</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="145"/>
+        <location filename="../qml/GameBF4Server.qml" line="151"/>
         <source>vhit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="148"/>
+        <location filename="../qml/GameBF4Server.qml" line="154"/>
         <source>vhud</source>
         <translation type="unfinished">hud</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="151"/>
+        <location filename="../qml/GameBF4Server.qml" line="157"/>
         <source>vicc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="154"/>
+        <location filename="../qml/GameBF4Server.qml" line="160"/>
         <source>vinb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="165"/>
+        <location filename="../qml/GameBF4Server.qml" line="171"/>
         <source>vkca</source>
         <translation type="unfinished">killCam</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="168"/>
+        <location filename="../qml/GameBF4Server.qml" line="174"/>
         <source>vmin</source>
         <translation type="unfinished">miniMap</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="171"/>
+        <location filename="../qml/GameBF4Server.qml" line="177"/>
         <source>vmsp</source>
         <translation type="unfinished">miniMapSpotting</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="174"/>
+        <location filename="../qml/GameBF4Server.qml" line="180"/>
         <source>vnta</source>
         <translation type="unfinished">nameTag</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="177"/>
+        <location filename="../qml/GameBF4Server.qml" line="183"/>
         <source>vrhe</source>
         <translation type="unfinished">regenerateHealth</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="180"/>
+        <location filename="../qml/GameBF4Server.qml" line="186"/>
         <source>vsbb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="183"/>
+        <location filename="../qml/GameBF4Server.qml" line="189"/>
         <source>vvsa</source>
         <translation type="unfinished">vehicleSpawnAllowed</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="186"/>
+        <location filename="../qml/GameBF4Server.qml" line="192"/>
         <source>gmwp</source>
         <translation type="unfinished">gunMasterWeaponsPreset</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="189"/>
+        <location filename="../qml/GameBF4Server.qml" line="195"/>
         <source>vmpl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="192"/>
+        <location filename="../qml/GameBF4Server.qml" line="198"/>
         <source>vmst</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="195"/>
+        <location filename="../qml/GameBF4Server.qml" line="201"/>
         <source>vnip</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="198"/>
+        <location filename="../qml/GameBF4Server.qml" line="204"/>
         <source>vnit</source>
         <translation type="unfinished">idleTimeout</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="201"/>
+        <location filename="../qml/GameBF4Server.qml" line="207"/>
         <source>vprb</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="212"/>
+        <location filename="../qml/GameBF4Server.qml" line="218"/>
         <source>vprc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="215"/>
+        <location filename="../qml/GameBF4Server.qml" line="221"/>
         <source>vprp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="218"/>
+        <location filename="../qml/GameBF4Server.qml" line="224"/>
         <source>vrlc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="221"/>
+        <location filename="../qml/GameBF4Server.qml" line="227"/>
         <source>vrsp</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="224"/>
+        <location filename="../qml/GameBF4Server.qml" line="230"/>
         <source>vrtl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="227"/>
+        <location filename="../qml/GameBF4Server.qml" line="233"/>
         <source>vtbr</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="230"/>
+        <location filename="../qml/GameBF4Server.qml" line="236"/>
         <source>vtkc</source>
         <translation type="unfinished">teamKillCountForKick</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="233"/>
+        <location filename="../qml/GameBF4Server.qml" line="239"/>
         <source>vtkk</source>
         <translation type="unfinished">teamKillKickForBan</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="236"/>
+        <location filename="../qml/GameBF4Server.qml" line="242"/>
         <source>vbdm</source>
         <translation type="unfinished">bulletDamage</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="239"/>
+        <location filename="../qml/GameBF4Server.qml" line="245"/>
         <source>vgmc</source>
         <translation type="unfinished">gameModeCounter</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="242"/>
+        <location filename="../qml/GameBF4Server.qml" line="248"/>
         <source>vprt</source>
         <translation type="unfinished">playerRespawnTime</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="245"/>
+        <location filename="../qml/GameBF4Server.qml" line="251"/>
         <source>vshe</source>
         <translation type="unfinished">soldierHealth</translation>
     </message>
     <message>
-        <location filename="../qml/GameBF4Server.qml" line="248"/>
+        <location filename="../qml/GameBF4Server.qml" line="254"/>
         <source>vvsd</source>
         <translation type="unfinished">vehicleSpawnDelay</translation>
     </message>
@@ -725,54 +759,54 @@
         <translation>Установленная версия</translation>
     </message>
     <message>
-        <location filename="../qml/GameInfo.qml" line="90"/>
-        <location filename="../qml/GameInfo.qml" line="98"/>
+        <location filename="../qml/GameInfo.qml" line="95"/>
+        <location filename="../qml/GameInfo.qml" line="103"/>
         <source>Kill</source>
         <translation>Убить</translation>
     </message>
     <message>
-        <location filename="../qml/GameInfo.qml" line="92"/>
-        <location filename="../qml/GameInfo.qml" line="100"/>
+        <location filename="../qml/GameInfo.qml" line="97"/>
+        <location filename="../qml/GameInfo.qml" line="105"/>
         <source>Run</source>
         <translation>Запуск</translation>
     </message>
     <message>
-        <location filename="../qml/GameInfo.qml" line="144"/>
+        <location filename="../qml/GameInfo.qml" line="149"/>
         <source>Repair</source>
         <translation>Исправить</translation>
     </message>
     <message>
-        <location filename="../qml/GameInfo.qml" line="153"/>
+        <location filename="../qml/GameInfo.qml" line="158"/>
         <source>Update</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../qml/GameInfo.qml" line="163"/>
+        <location filename="../qml/GameInfo.qml" line="168"/>
         <source>Change lang</source>
         <translation>Изменить язык</translation>
     </message>
     <message>
-        <location filename="../qml/GameInfo.qml" line="170"/>
+        <location filename="../qml/GameInfo.qml" line="175"/>
         <source>Remove</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../qml/GameInfo.qml" line="244"/>
+        <location filename="../qml/GameInfo.qml" line="249"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../qml/GameInfo.qml" line="248"/>
+        <location filename="../qml/GameInfo.qml" line="253"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../qml/GameInfo.qml" line="283"/>
+        <location filename="../qml/GameInfo.qml" line="288"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../qml/GameInfo.qml" line="287"/>
+        <location filename="../qml/GameInfo.qml" line="292"/>
         <source>Change</source>
         <translation>Изменить</translation>
     </message>
@@ -808,117 +842,124 @@
 <context>
     <name>GamesView</name>
     <message>
-        <location filename="../qml/GamesView.qml" line="168"/>
+        <location filename="../qml/GamesView.qml" line="17"/>
+        <location filename="../qml/GamesView.qml" line="18"/>
+        <location filename="../qml/GamesView.qml" line="19"/>
+        <source>Server list</source>
+        <translation>Список серверов</translation>
+    </message>
+    <message>
+        <location filename="../qml/GamesView.qml" line="187"/>
         <source>Air Superiority</source>
         <translation>Воздушное превосходство</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="170"/>
+        <location filename="../qml/GamesView.qml" line="189"/>
         <source>B2K Conquest Large</source>
-        <translation type="unfinished"></translation>
+        <translation>B2K Захват (большой)</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="172"/>
+        <location filename="../qml/GamesView.qml" line="191"/>
         <source>B2K Conquest Small</source>
-        <translation type="unfinished"></translation>
+        <translation>B2K Захват</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="174"/>
+        <location filename="../qml/GamesView.qml" line="193"/>
         <source>Capture The Flag</source>
         <translation>Захват флага</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="176"/>
+        <location filename="../qml/GamesView.qml" line="195"/>
         <source>Carrier Assault Large</source>
         <translation>Штурм авианосца (большой)</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="178"/>
+        <location filename="../qml/GamesView.qml" line="197"/>
         <source>Carrier Assault Small</source>
         <translation>Штурм авианосца</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="180"/>
+        <location filename="../qml/GamesView.qml" line="199"/>
         <source>Chain Link</source>
         <translation>Соединение</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="182"/>
+        <location filename="../qml/GamesView.qml" line="201"/>
         <source>Conquest Assault Large</source>
         <translation>Захват в нападении (большой)</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="184"/>
+        <location filename="../qml/GamesView.qml" line="203"/>
         <source>Conquest Assault Small</source>
         <translation>Захват в нападении</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="186"/>
+        <location filename="../qml/GamesView.qml" line="205"/>
         <source>Conquest Large</source>
         <translation>Захват (большой)</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="188"/>
+        <location filename="../qml/GamesView.qml" line="207"/>
         <source>Conquest Small</source>
         <translation>Захват</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="190"/>
+        <location filename="../qml/GamesView.qml" line="209"/>
         <source>Domination</source>
         <translation>Превосходство</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="192"/>
+        <location filename="../qml/GamesView.qml" line="211"/>
         <source>Defuse</source>
         <translation>Обезвреживание</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="194"/>
+        <location filename="../qml/GamesView.qml" line="213"/>
         <source>Gun Master</source>
         <translation>Мастер оружия</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="196"/>
+        <location filename="../qml/GamesView.qml" line="215"/>
         <source>Obliteration</source>
         <translation>Истребление</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="198"/>
+        <location filename="../qml/GamesView.qml" line="217"/>
         <source>Rush</source>
         <translation>Штурм</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="200"/>
+        <location filename="../qml/GamesView.qml" line="219"/>
         <source>Scavenger</source>
         <translation>Мусорщик</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="202"/>
+        <location filename="../qml/GamesView.qml" line="221"/>
         <source>Squad Deathmatch</source>
         <translation>Схватка отрядов</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="204"/>
+        <location filename="../qml/GamesView.qml" line="223"/>
         <source>Squad Rush</source>
         <translation>Штурм отрядов</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="206"/>
+        <location filename="../qml/GamesView.qml" line="225"/>
         <source>Squad Obliteration</source>
         <translation>Истребление отрядов</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="208"/>
+        <location filename="../qml/GamesView.qml" line="227"/>
         <source>Team Deathmatch</source>
         <translation>Схватка команд</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="210"/>
+        <location filename="../qml/GamesView.qml" line="229"/>
         <source>TDM Close Quarters</source>
         <translation>Схватка команд (Close Quarters)</translation>
     </message>
     <message>
-        <location filename="../qml/GamesView.qml" line="212"/>
+        <location filename="../qml/GamesView.qml" line="231"/>
         <source>Tank Superiority</source>
         <translation>Превосходство на танке</translation>
     </message>
@@ -1033,37 +1074,37 @@
 <context>
     <name>SettingsView</name>
     <message>
-        <location filename="../qml/SettingsView.qml" line="24"/>
+        <location filename="../qml/SettingsView.qml" line="28"/>
         <source>ZClient language</source>
         <translation>Язык ZClient</translation>
     </message>
     <message>
-        <location filename="../qml/SettingsView.qml" line="40"/>
+        <location filename="../qml/SettingsView.qml" line="47"/>
         <source>Restart</source>
         <translation>Перезапуск</translation>
     </message>
     <message>
-        <location filename="../qml/SettingsView.qml" line="48"/>
+        <location filename="../qml/SettingsView.qml" line="60"/>
         <source>Default installer language</source>
         <translation>Язык по умолчанию для установки</translation>
     </message>
     <message>
-        <location filename="../qml/SettingsView.qml" line="59"/>
+        <location filename="../qml/SettingsView.qml" line="82"/>
         <source>Install locations</source>
         <translation>Места для установки</translation>
     </message>
     <message>
-        <location filename="../qml/SettingsView.qml" line="94"/>
+        <location filename="../qml/SettingsView.qml" line="121"/>
         <source>Add</source>
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="../qml/SettingsView.qml" line="98"/>
+        <location filename="../qml/SettingsView.qml" line="125"/>
         <source>Del</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../qml/SettingsView.qml" line="107"/>
+        <location filename="../qml/SettingsView.qml" line="141"/>
         <source>Overlay hotkey</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1091,27 +1132,27 @@
         <translation>Невидимый</translation>
     </message>
     <message>
-        <location filename="../qml/TopBar.qml" line="65"/>
+        <location filename="../qml/TopBar.qml" line="47"/>
         <source>News</source>
         <translation>Новости</translation>
     </message>
     <message>
-        <location filename="../qml/TopBar.qml" line="70"/>
+        <location filename="../qml/TopBar.qml" line="53"/>
         <source>My Games</source>
         <translation>Мои игры</translation>
     </message>
     <message>
-        <location filename="../qml/TopBar.qml" line="75"/>
+        <location filename="../qml/TopBar.qml" line="58"/>
         <source>Downloads</source>
         <translation>Загрузки</translation>
     </message>
     <message>
-        <location filename="../qml/TopBar.qml" line="97"/>
+        <location filename="../qml/TopBar.qml" line="80"/>
         <source>Library</source>
         <translation>Библиотека</translation>
     </message>
     <message>
-        <location filename="../qml/TopBar.qml" line="107"/>
+        <location filename="../qml/TopBar.qml" line="91"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
@@ -1204,23 +1245,23 @@
         <translation>Неизвестно</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="236"/>
-        <location filename="../qml/main.qml" line="238"/>
+        <location filename="../qml/main.qml" line="237"/>
+        <location filename="../qml/main.qml" line="239"/>
         <source>Updating</source>
         <translation>Обновление</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="254"/>
+        <location filename="../qml/main.qml" line="255"/>
         <source>Connecting...</source>
         <translation>Подключение...</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="263"/>
+        <location filename="../qml/main.qml" line="264"/>
         <source>Disconnected, reconnecting in 10 seconds</source>
         <translation>Отключено, переподключение через 10 секунд</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="329"/>
+        <location filename="../qml/main.qml" line="342"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>

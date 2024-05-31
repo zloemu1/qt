@@ -58,10 +58,6 @@ ApplicationWindow {
 				topbar.currentIndex = 6
 				viewMain.currentIndex = 6
 				break;
-			case 'steamdumper':
-				topbar.currentIndex = 1
-				viewMain.currentIndex = 7
-				break;
 			default:
 				console.log('Unk name ' + name)
 				break;
@@ -132,6 +128,12 @@ ApplicationWindow {
 			default:
 				return qsTr('Unknown');
 		}
+	}
+//
+	property TrayMenu trayMenu: trayMenuComp.createObject(null)
+	Component {
+		id: trayMenuComp
+		TrayMenu {}
 	}
 //
 	property FriendsWindow friendsWindow: friendsWindowComp.createObject(null)
@@ -268,10 +270,10 @@ ApplicationWindow {
 		{
 			baseUpdateStatus.visible = true
 		}
-		function onSignalIcon(rmb)
+		function onSignalIcon(rmb, xpos)
 		{
 			if (rmb)
-				Qt.quit()
+				trayMenu.zshow(xpos)
 			else if (visible)
 				hide()
 			else

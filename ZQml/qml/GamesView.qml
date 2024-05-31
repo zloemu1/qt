@@ -14,10 +14,10 @@ Page {
 	property var compNews: Qt.createComponent("GameNews.qml")
 	property var compAchievements: Qt.createComponent("GameAchievements.qml")
 	property variant zviews: ({
-		'bf3':{'comp':Qt.createComponent("GameBF3.qml"),'tab':'Servers'},
-		'bf4':{'comp':Qt.createComponent("GameBF4.qml"),'tab':'Servers'},
-		'bfhl':{'comp':Qt.createComponent("GameBFHL.qml"),'tab':'Servers'},
-		'sims4':{'comp':Qt.createComponent("GameSims4.qml"),'tab':'Gallery'},
+		'bf3':{'comp': Qt.createComponent("GameBF3.qml"),'tab': qsTr('Server list')},
+		'bf4':{'comp': Qt.createComponent("GameBF4.qml"),'tab': qsTr('Server list')},
+		'bfhl':{'comp': Qt.createComponent("GameBFHL.qml"),'tab': qsTr('Server list')},
+		'sims4':{'comp': Qt.createComponent("GameSims4.qml"),'tab': 'Gallery'},
 	})
 	Component.onCompleted: {
 		if (compInfo.status === Component.Error) console.log('Create compInfo error ' + compInfo.errorString())
@@ -36,7 +36,6 @@ Page {
 			gv.pageChange(vis)
 	}
 	RowLayout {
-		id: rlayout
 		anchors.fill: parent
 		anchors.margins: 10
 		ColumnLayout {
@@ -75,12 +74,26 @@ Page {
 					}
 					currentIndex: -1
 					highlightMoveVelocity: -1
-					delegate: Label {
+					delegate: Item {
 						anchors.left: parent ? parent.left : undefined
 						anchors.right: parent ? parent.right : undefined
 						anchors.rightMargin: installedGamesList.contentHeight > installedGamesList.height ? 10 : 0
-						clip: true
-						text: display.name
+						height: nameLabel.height
+						Label {
+							id: outdatedIcon
+							width: (decoration.state == ZGames.STATE_OUTDATED) ? nameLabel.height - 3 : 0
+							anchors.verticalCenter: parent.verticalCenter
+							font.family: 'Material Icons'
+							text: '\uf001'
+							visible: decoration.state == ZGames.STATE_OUTDATED
+						}
+						Label {
+							id: nameLabel
+							anchors.left: outdatedIcon.right
+							anchors.right: parent.right
+							clip: true
+							text: display.name
+						}
 //						ToolTip.text: display.name
 //						ToolTip.visible: ma.containsMouse && contentWidth > width
 						MouseArea {
@@ -109,7 +122,7 @@ Page {
 						if (installedGamesList.currentIndex >= 0)
 						{
 							zgame = model.data(model.index(currentIndex, 0), 0)
-							gv = gameView.createObject(rlayout)
+							gv = gameView.createObject(gparent)
 							if (gv.status === Component.Error)
 								console.log('Create games view error ' + gv.errorString())
 						}
@@ -117,12 +130,28 @@ Page {
 				}
 			}
 		}
-		Component {
-			id: gameView
-			GameView {
+		ColumnLayout {
+			Layout.fillHeight: true
+			Layout.fillWidth: true
+			RowLayout {
+				id: gparent
 				Layout.fillHeight: true
 				Layout.fillWidth: true
 			}
+			Label {
+				Layout.fillWidth: true
+				horizontalAlignment: Text.AlignRight
+				width: implicitWidth
+				visible: ZUser.gameStatus.length > 0
+				text: ZUser.gameStatus
+			}
+		}
+	}
+	Component {
+		id: gameView
+		GameView {
+			Layout.fillHeight: true
+			Layout.fillWidth: true
 		}
 	}
 	Popup {

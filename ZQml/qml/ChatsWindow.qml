@@ -33,7 +33,7 @@ ApplicationWindow {
 				visible = true
 			if (select)
 			{
-				chats.currentIndex = chats.count - 1
+				chats.currentIndex = 0
 				requestActivate()
 			}
 		}
@@ -80,6 +80,7 @@ ApplicationWindow {
 			spacing: 5
 			width: 250
 			model: ZChats
+			currentIndex: -1
 			ScrollBar.vertical: ScrollBar {
 				policy: chats.contentHeight > chats.height ? ScrollBar.AlwaysOn : ScrollBar.AlwaysOff
 				implicitWidth: 10
@@ -115,7 +116,7 @@ ApplicationWindow {
 				height: childrenRect.height
 				acceptedButtons: Qt.LeftButton
 				onClicked: ZChats.select(display.id)
-				onDoubleClicked: ZChats.close(display.id)
+//				onDoubleClicked: ZChats.close(display.id)
 				RowLayout {
 					spacing: 5
 					anchors.left: parent.left
@@ -168,8 +169,8 @@ ApplicationWindow {
 						Layout.alignment: Qt.AlignVCenter
 						color: '#ACACAC'
 						font.family: "Material Icons"
-						font.pixelSize: 14
-						text: '\ue5c9'
+						font.pixelSize: 18
+						text: '\ue872'
 						MouseArea {
 							anchors.fill: parent
 							acceptedButtons: Qt.LeftButton

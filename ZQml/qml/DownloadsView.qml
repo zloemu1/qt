@@ -264,9 +264,9 @@ Page {
 			taskbarButton.progress.value = 0
 			taskbarButton.progress.visible = true
 		}
-		function onSignalGCAllocateError(state, file)
+		function onSignalGCAllocateError(stage, file)
 		{
-			statusText.text = gameStateStr(ZGames.STATE_ALLOCATE_ERROR) + ' state ' + state + ' in ' + file
+			statusText.text = gameStateStr(ZGames.STATE_ALLOCATE_ERROR) + ' stage ' + stage + ' in ' + file
 			rowFiles.visible = false
 			rowLocal.visible = false
 			progressFiles.visible = false

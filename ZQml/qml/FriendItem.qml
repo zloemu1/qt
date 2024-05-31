@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Layouts 1.15
 import ZGui 1.0
 
 MouseArea {
@@ -34,8 +35,8 @@ MouseArea {
 	height: childrenRect.height
 	acceptedButtons: Qt.LeftButton | Qt.RightButton
 	onClicked: if (display.fstatus === 2 && mouse.button === Qt.RightButton) friendMenu.show(display.id)
-	onDoubleClicked: if (display.fstatus === 2 && mouse.button === Qt.LeftButton) ZChats.open(display.id, true)
-	Row {
+	onDoubleClicked: if (display.fstatus === 2 && mouse.button === Qt.LeftButton) ZChats.open(display.id)
+	RowLayout {
 		spacing: 5
 		anchors.left: parent.left
 		anchors.right: parent.right
@@ -53,8 +54,10 @@ MouseArea {
 			id: avatar
 			cache: false
 			source: 'file:///' + ZFriends.getAvatar(display.id)
-			width: 32
-			height: 32
+			Layout.preferredWidth: 32
+			Layout.preferredHeight: 32
+			Layout.maximumWidth: 32
+			Layout.maximumHeight: 32
 			Connections {
 				target: display
 				function onSignalAvatar(path)
@@ -65,7 +68,7 @@ MouseArea {
 			}
 		}
 		Column {
-			anchors.verticalCenter: parent.verticalCenter
+			Layout.fillWidth: true
 			Text {
 				text: display.name
 				color: '#ACACAC'
@@ -73,12 +76,24 @@ MouseArea {
 			}
 			Text {
 				id: statusText
+				anchors.left: parent.left
+				anchors.right: parent.right
 				color: '#ACACAC'
+				wrapMode: Text.Wrap
+			}
+			Text {
+				id: gameStatusText
+				anchors.left: parent.left
+				anchors.right: parent.right
+				color: '#ACACAC'
+				wrapMode: Text.Wrap
+				text: display.gameStatus
+				visible: display.gameStatus.length > 0
 			}
 			MouseArea {
 				id: rowCancel
-				width:  childrenRect.width
-				height: childrenRect.height
+				implicitWidth:  childrenRect.width
+				implicitHeight: childrenRect.height
 				onClicked: ZFriends.del(display.id)
 				Row {
 					Text {
@@ -95,9 +110,10 @@ MouseArea {
 			}
 			Row {
 				id: rowIncoming
+				spacing: 10
 				MouseArea {
-					width:  childrenRect.width
-					height: childrenRect.height
+					implicitWidth:  childrenRect.width
+					implicitHeight: childrenRect.height
 					onClicked: ZFriends.add(display.id)
 					Row {
 						Text {
@@ -112,13 +128,9 @@ MouseArea {
 						}
 					}
 				}
-				Item {
-					width: 10
-					height: 1
-				}
 				MouseArea {
-					width:  childrenRect.width
-					height: childrenRect.height
+					implicitWidth:  childrenRect.width
+					implicitHeight: childrenRect.height
 					onClicked: ZFriends.del(display.id)
 					Row {
 						Text {

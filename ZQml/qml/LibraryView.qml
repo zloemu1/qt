@@ -1,20 +1,25 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import Qt.labs.platform 1.1 as Platform
 import ZGui 1.0
 
 StackLayout {
+	property QtLibrary zgame
 	function pageChange(vis)
 	{
 		if (vis)
 			ZLibrary.load()
 		else
 		{
-			if (libraryView.currentIndex > 0)
-			{
+			if (libraryView.currentIndex === 1)
 				ZGames.addCancel()
-				libraryView.currentIndex = 0
+			else if (libraryView.currentIndex === 2)
+			{
+				libraryViewDetails.active = false
+				zgame = null
 			}
+			libraryView.currentIndex = 0
 			ZLibrary.unload()
 		}
 	}
@@ -23,6 +28,11 @@ StackLayout {
 	clip: true
 	LibraryViewMain {}
 	LibraryViewAdd {}
+	Loader {
+		id: libraryViewDetails
+		active: false
+		source: 'LibraryViewDetails.qml'
+	}
 //
 	property int zid
 	property bool fromHdd
@@ -44,6 +54,7 @@ StackLayout {
 		langCombo.recalculateWidth()
 		if (bnetCombo.count < 2 && langCombo.count < 2)
 		{
+			showDetails(null)
 			var res = ZGames.loadInfo(zid, 0)
 			if (res === 0)
 				popupBusy.show()
@@ -53,7 +64,41 @@ StackLayout {
 		else
 			popupLang.open()
 	}
+	function showDetails(game)
+	{
+		if (game !== null)
+		{
+			zgame = game
+			libraryViewDetails.active = true
+			libraryView.currentIndex = 2
+		}
+		else
+		{
+			libraryViewDetails.active = false
+			libraryView.currentIndex = 0
+			zgame = game
+		}
+	}
 //
+	Platform.FolderDialog {
+		id: folderDialog
+		property int gid
+		property int sys
+		function show(_gid, _sys)
+		{
+			gid = _gid
+			sys = _sys
+			open()
+		}
+		onAccepted: {
+			libraryView.folder = folder
+			if (libraryView.folder.indexOf('file:///') === -1)
+				return;
+			libraryView.folder = libraryView.folder.replace('file:///', '')
+			if (ZQt.isValidPath(libraryView.folder))
+				libraryView.show(gid, true, sys)
+		}
+	}
 	Popup {
 		id: popupLang
 		anchors.centerIn: Overlay.overlay
@@ -101,6 +146,7 @@ StackLayout {
 					focus: true
 					onClicked: {
 						popupLang.close()
+						showDetails(null)
 						var res = ZGames.loadInfo(libraryView.zid, langCombo.currentValue, (bnetCombo.count > 0) ? bnetCombo.currentValue : '');
 						if (res === 0)
 							popupBusy.show()

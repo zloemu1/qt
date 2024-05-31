@@ -17,13 +17,13 @@ Column {
 			height: childrenRect.height
 			color: "#3B3B3B"
 			TextInput {
-				id: mail
+				id: login
 				anchors.left: parent.left
 				anchors.right: parent.right
 				font.pointSize: 13
 				color: Material.color(Material.Grey)
 				selectByMouse: true
-				text: ZSims4.mail
+				text: ZSims4.getLogin()
 			}
 		}
 	}
@@ -45,43 +45,43 @@ Column {
 				color: Material.color(Material.Grey)
 				echoMode: TextInput.PasswordEchoOnEdit
 				selectByMouse: true
-				text: ZSims4.pass
 			}
 		}
 	}
 	Button {
 		text: 'Save'
 		onClicked: {
-			ZSims4.mail = mail.text
-			ZSims4.pass = pass.text
-			ZSims4.save()
-			var res = ZSims4.testAcc();
-			testResult.visible = true
+			errTxt.visible = false
+			var res = ZSims4.save(login.text, pass.text)
+			errCode.visible = true
 			switch (res)
 			{
 				case 0:
-					testResult.text = 'Result: OK'
+					errCode.text = 'Result: OK'
 					break;
-				case 1:
-					testResult.text = 'Result: 1'
+				case 150:
+					errCode.text = 'Cleared'
 					break;
-				case 2:
-					testResult.text = 'Result: 2'
-					break;
-				case 3:
-					testResult.text = 'Result: 3'
-					break;
-				case 255:
-					testResult.visible = false
+				case 253:
+				case 254:
+					errCode.visible = false
 					break;
 				default:
-					testResult.text = 'Result: ' + res
+					errCode.text = 'Result: ' + res
 					break;
 			}
 		}
 	}
 	Label {
-		id: testResult
+		id: errCode
 		visible: false
+	}
+	Label {
+		id: errTxt
+		visible: false
+		Connections {
+			target: ZSims4
+			function onSignalErr(err) { errTxt.visible = true; errTxt.text = err }
+		}
 	}
 }

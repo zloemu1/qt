@@ -6,6 +6,8 @@ import ZGui 1.0
 
 StackLayout {
 	id: stack
+	currentIndex: 0
+	clip: true
 	function pageChange(vis)
 	{
 		if (vis)
@@ -29,19 +31,33 @@ StackLayout {
 		if (srv)
 		{
 			zsrv = srv
-			sv = serverView.createObject(scrollView.contentItem.contentItem)
+			sv = serverView.createObject(stack)
 			if (sv.status === Component.Error)
 				console.log('Create bf3 server view error ' + sv.errorString())
 			else
 				stack.currentIndex = 1
 		}
 	}
+	function runBF3(srv, mode = 0, pass = '')
+	{
+		
+		switch (ZGameServers.startBF3(zgame.id, srv, mode, pass))
+		{
+			case 255:
+				popupBF3Error.show('Wrong mode')
+				break;
+			case 254:
+				popupBF3Error.show('Server not found')
+				break;
+			case 253:
+				popupBF3Error.show('Wrong password')
+				break;
+		}
+	}
 	Connections {
 		target: ZGameServers
 		function onSignalBF3Delete(id) { if (sv !== null && zsrv.id == id) serverDetails(null) }
 	}
-	currentIndex: 0
-	clip: true
 	ListView {
 		id: list
 		Layout.leftMargin: 10
@@ -79,9 +95,15 @@ StackLayout {
 						}
 						Column {
 							Layout.fillWidth: true
-							Label {
-								text: display.name
-								wrapMode: Text.Wrap
+							Row {
+								Label {
+									text: '\ue897'
+									visible: display.secret.length > 0
+								}
+								Label {
+									text: display.name
+									wrapMode: Text.Wrap
+								}
 							}
 							Label {
 								text: display.levelname + ' | ' + modeNameBF(display.mode)
@@ -103,7 +125,7 @@ StackLayout {
 					text: "\ue037"
 					font.family: "Material Icons"
 					font.pointSize: 15
-					onClicked: ZGameServers.startBF3(zgame.id, decoration.id)
+					onClicked: if (decoration.secret.length > 0) popupBF3Pass.show(decoration.id); else runBF3(decoration.id)
 					enabled: ZGames.runnedGame === 0
 					ToolTip {
 						visible: parent.hovered
@@ -116,18 +138,79 @@ StackLayout {
 	}
 	Component {
 		id: serverView
-		GameBF3Server {
+		GameBF3Server {}
+	}
+	Popup {
+		id: popupBF3Pass
+		anchors.centerIn: Overlay.overlay
+		dim: true
+		modal: true
+		property int joinId;
+		function show(_joinId)
+		{
+			joinId = _joinId
+			popupBF3PassInput.text = ''
+			popupBF3Pass.open()
+		}
+		ColumnLayout {
+			anchors.centerIn: parent
+			Label {
+				Layout.alignment: Qt.AlignHCenter
+				text: 'Enter password'
+			}
+			Rectangle {
+				Layout.alignment: Qt.AlignHCenter
+				Layout.preferredWidth: 500
+				height: childrenRect.height
+				color: "#3B3B3B"
+				TextInput {
+					id: popupBF3PassInput
+					anchors.left: parent.left
+					anchors.right: parent.right
+					font.pointSize: 13
+					color: Material.foreground
+					selectByMouse: true
+				}
+			}
+			Row {
+				Layout.alignment: Qt.AlignHCenter
+				spacing: 10
+				Button {
+					text: qsTr('Cancel')
+					onClicked: popupBF3Pass.close()
+				}
+				Button {
+					text: qsTr('Continue')
+					onClicked: {
+						popupBF3Pass.close()
+						runBF3(popupBF3Pass.joinId, 0, popupBF3PassInput.text)
+					}
+				}
+			}
 		}
 	}
-	ScrollView {
-		id: scrollView
-		clip: true
-		ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
-		ScrollBar.vertical.policy: scrollView.contentHeight > scrollView.height ? ScrollBar.AlwaysOn : ScrollBar.AlwaysOff
-		ScrollBar.vertical.implicitWidth: 10
-		ScrollBar.vertical.contentItem: Rectangle {
-			color: Material.accent
-			radius: 5
+	Popup {
+		id: popupBF3Error
+		anchors.centerIn: Overlay.overlay
+		dim: true
+		modal: true
+		function show(str)
+		{
+			popupBF3ErrorLabel.text = str
+			popupBF3Error.open()
+		}
+		ColumnLayout {
+			anchors.centerIn: parent
+			Label {
+				id: popupBF3ErrorLabel
+				font.bold: true
+				Layout.alignment: Qt.AlignHCenter
+			}
+			Button {
+				text: qsTr('Close')
+				Layout.alignment: Qt.AlignHCenter
+				onClicked: popupBF3Error.close()
+			}
 		}
 	}
 }

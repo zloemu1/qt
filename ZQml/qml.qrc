@@ -1,17 +1,11 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/AutoResizingComboBox.qml</file>
-        <file>qml/ChatsWindow.qml</file>
-        <file>qml/CommunityView.qml</file>
-        <file>qml/DownloadsItem.qml</file>
-        <file>qml/DownloadsView.qml</file>
-        <file>qml/FriendItem.qml</file>
-        <file>qml/FriendsWindow.qml</file>
         <file>qml/GameAchievement.qml</file>
         <file>qml/GameAchievements.qml</file>
         <file>qml/GameBF3.qml</file>
         <file>qml/GameBF3Server.qml</file>
         <file>qml/GameBF4.qml</file>
+        <file>qml/GameBF4Keeper.qml</file>
         <file>qml/GameBF4Server.qml</file>
         <file>qml/GameBFHL.qml</file>
         <file>qml/GameContent.qml</file>
@@ -22,17 +16,27 @@
         <file>qml/GameSims4.qml</file>
         <file>qml/GamesView.qml</file>
         <file>qml/GameView.qml</file>
-        <file>qml/InviteWindow.qml</file>
+
         <file>qml/LibraryView.qml</file>
         <file>qml/LibraryViewAdd.qml</file>
+        <file>qml/LibraryViewDetails.qml</file>
         <file>qml/LibraryViewMain.qml</file>
+
+        <file>qml/AutoResizingComboBox.qml</file>
+        <file>qml/ChatsWindow.qml</file>
+        <file>qml/CommunityView.qml</file>
+        <file>qml/DownloadsItem.qml</file>
+        <file>qml/DownloadsView.qml</file>
+        <file>qml/FriendItem.qml</file>
+        <file>qml/FriendsWindow.qml</file>
+        <file>qml/InviteWindow.qml</file>
         <file>qml/LogView.qml</file>
         <file>qml/main.qml</file>
         <file>qml/NewsItem.qml</file>
         <file>qml/NewsView.qml</file>
         <file>qml/SettingsView.qml</file>
-        <file>qml/SteamDumperView.qml</file>
         <file>qml/TopBar.qml</file>
+        <file>qml/TrayMenu.qml</file>
         <file>qml/Views.qml</file>
         <file>qtquickcontrols2.conf</file>
     </qresource>
